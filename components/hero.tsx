@@ -52,8 +52,6 @@ export default function Hero() {
           <motion.div initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.15 }} className="relative order-2 mx-auto flex w-full max-w-[450px] items-end justify-center lg:order-2 lg:mx-0 lg:max-w-none lg:justify-end">
             <div aria-hidden="true" className="absolute right-[9%] top-[6%] aspect-square w-[76%] rounded-full bg-[#e9dfd0]" />
             <img src={portraitUrl} alt="Safiya Muhammad, software engineer and product manager" fetchPriority="high" className="relative z-10 aspect-[4/4.7] w-[83%] object-cover object-top [mask-image:linear-gradient(to_bottom,black_78%,transparent_100%)]" />
-            <div className="absolute bottom-[8%] left-0 z-20 rounded-full border border-border bg-background/90 px-4 py-2 text-xs font-medium tracking-wide text-foreground backdrop-blur">People-first products</div>
-            <div className="absolute right-0 top-[17%] z-20 -rotate-6 rounded-full bg-[#f7f2e9] px-4 py-2 text-xs font-medium text-foreground shadow-md">1,800+ farmers reached</div>
           </motion.div>
         </div>
         <div className="mt-8 hidden items-center justify-between border-t border-border pt-4 text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground lg:flex"><span>Available for meaningful work</span><span>Remote-first · Worldwide</span></div>
