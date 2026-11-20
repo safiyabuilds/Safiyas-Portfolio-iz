@@ -1,12 +1,11 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { ArrowDown, ArrowUpRight } from "lucide-react"
+import { ArrowDown, Plus } from "lucide-react"
 import { AnimatePresence, motion } from "framer-motion"
 import SocialLinks from "./social-links"
 
-const roles = ["Software developer", "Product Manager", "Botanist"]
-
+const roles = ["Software Engineer", "Product Manager", "Botanist"]
 const portraitUrl = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-11-20%20at%2011.07.26%20PM-PT0pFHJUHfTXzifzynW7kmBCCQvR5x.jpeg"
 
 export default function Hero() {
@@ -15,62 +14,49 @@ export default function Hero() {
   useEffect(() => {
     const intervalId = window.setInterval(() => {
       setRoleIndex((currentIndex) => (currentIndex + 1) % roles.length)
-    }, 5000)
+    }, 3500)
 
     return () => window.clearInterval(intervalId)
   }, [])
 
   return (
-    <section className="relative overflow-hidden px-5 pb-16 pt-28 sm:px-8 sm:pt-32 lg:pb-24 lg:pt-36">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-        <motion.div initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="order-2 lg:order-1">
-          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground">
-            <span className="size-2 rounded-full bg-secondary" /> Available for meaningful work
-          </div>
-          <h1 className="max-w-3xl text-5xl font-semibold leading-[1.04] tracking-[-0.055em] sm:text-6xl lg:text-7xl xl:text-[5.6rem]">
-            Hi, I&apos;m <span className="text-primary">Safiya.</span>
-            <span className="mt-4 block min-h-[2.2em] text-3xl leading-tight tracking-[-0.04em] sm:text-4xl lg:text-5xl" aria-live="polite" aria-atomic="true">
-              I am a{" "}
-              <span className="inline-block text-primary">
+    <section className="relative overflow-hidden px-5 pb-16 pt-32 sm:px-8 sm:pb-24 sm:pt-36 lg:min-h-[calc(100svh-76px)] lg:px-12 lg:pb-20 lg:pt-20">
+      <div className="mx-auto flex min-h-[inherit] max-w-6xl flex-col justify-center">
+        <div className="mb-10 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground sm:mb-12">
+          <span className="size-2 rounded-full bg-[#78916c]" aria-hidden="true" />
+          Independent builder · Kaduna, Nigeria
+        </div>
+        <div className="grid items-center gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:gap-0">
+          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="relative z-10 order-1 pb-5 lg:order-1 lg:pb-0">
+            <h1 className="text-[clamp(3.5rem,9vw,7.8rem)] font-semibold leading-[0.88] tracking-[-0.075em]">
+              Hi, I&apos;m<br />Safiya<span className="text-primary">.</span>
+            </h1>
+            <p className="mt-5 text-2xl font-medium tracking-[-0.045em] text-muted-foreground sm:text-3xl">I am a</p>
+            <div className="relative mt-1 max-w-[min(100%,34rem)] -rotate-1 border border-[#d8cfc0] bg-[#f7f2e9] px-5 py-5 shadow-[5px_7px_0_#28231d] sm:px-8 sm:py-6">
+              <div aria-hidden="true" className="absolute -top-[11px] left-5 right-5 flex justify-between sm:left-8 sm:right-8">
+                {Array.from({ length: 8 }, (_, index) => <span key={index} className="size-[18px] rounded-full border-2 border-[#b8ad9c] bg-background" />)}
+              </div>
+              <div className="min-h-[1.2em] text-[clamp(2rem,5.2vw,4.1rem)] font-semibold leading-none tracking-[-0.065em] text-foreground" aria-live="polite" aria-atomic="true">
                 <AnimatePresence mode="wait" initial={false}>
-                  <motion.span
-                    key={roles[roleIndex]}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.25 }}
-                    className="inline-block font-serif font-normal italic"
-                  >
-                    {roles[roleIndex]}
-                  </motion.span>
+                  <motion.span key={roles[roleIndex]} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="block">{roles[roleIndex]}</motion.span>
                 </AnimatePresence>
-              </span>
-            </span>
-          </h1>
-          <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl">Software engineer and product manager making useful digital products, and helping ambitious teams bring them to life.</p>
-          <p className="mt-4 text-sm font-medium tracking-wide text-muted-foreground">Based in Kaduna, Nigeria · Working everywhere</p>
-          <div className="mt-9 flex flex-wrap items-center gap-3">
-            <a href="#projects" className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground transition hover:opacity-90">Explore my work <ArrowDown size={16} /></a>
-            <a href="#contact" className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 font-medium transition hover:border-primary hover:text-primary">Let&apos;s talk <ArrowUpRight size={16} /></a>
-          </div>
-          <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-3">
-            <span className="text-sm text-muted-foreground">Follow <span className="font-semibold text-foreground">@safiyabuilds</span></span>
-            <SocialLinks />
-            <span className="hidden h-px w-10 bg-border sm:block" aria-hidden="true" />
-            <span className="text-sm text-muted-foreground">Web · Product · Impact</span>
-          </div>
-        </motion.div>
-        <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.12 }} className="relative order-1 mx-auto w-full max-w-[440px] lg:order-2">
-          <div className="absolute -right-3 -top-3 size-24 rounded-full border border-primary/30 sm:-right-5 sm:-top-5 sm:size-32" aria-hidden="true" />
-          <div className="relative overflow-hidden rounded-[44%_44%_18px_18px] bg-card">
-            <img src={portraitUrl} alt="Safiya Muhammad, software engineer and product manager" fetchPriority="high" className="aspect-[4/5] w-full object-cover object-top" />
-          </div>
-          <div className="absolute -bottom-5 left-3 rounded-2xl border border-border bg-background/95 px-4 py-3 shadow-lg backdrop-blur sm:-left-7 sm:px-5">
-            <p className="text-2xl font-semibold tracking-tight">1,800<span className="text-primary">+</span></p>
-            <p className="text-xs text-muted-foreground">farmers reached</p>
-          </div>
-          <span className="absolute bottom-2 right-0 rounded-full bg-secondary px-4 py-2 text-xs font-medium text-secondary-foreground sm:-right-5">People-first products</span>
-        </motion.div>
+              </div>
+            </div>
+            <p className="mt-8 max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">I build useful digital products and help ambitious teams bring thoughtful ideas to life.</p>
+            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
+              <a href="#contact" className="inline-flex items-center gap-3 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition hover:bg-primary">Start a project <span className="flex size-7 items-center justify-center rounded-full bg-background/15"><Plus size={15} /></span></a>
+              <a href="#projects" className="inline-flex items-center gap-2 text-sm font-medium text-foreground underline decoration-border underline-offset-4 transition hover:decoration-foreground">See my work <ArrowDown size={15} /></a>
+            </div>
+            <div className="mt-7 flex items-center gap-4 text-sm text-muted-foreground"><span>Find me</span><SocialLinks /><span className="hidden sm:inline">Web · Product · Impact</span></div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.15 }} className="relative order-2 mx-auto flex w-full max-w-[450px] items-end justify-center lg:order-2 lg:mx-0 lg:max-w-none lg:justify-end">
+            <div aria-hidden="true" className="absolute right-[9%] top-[6%] aspect-square w-[76%] rounded-full bg-[#e9dfd0]" />
+            <img src={portraitUrl} alt="Safiya Muhammad, software engineer and product manager" fetchPriority="high" className="relative z-10 aspect-[4/4.7] w-[83%] object-cover object-top [mask-image:linear-gradient(to_bottom,black_78%,transparent_100%)]" />
+            <div className="absolute bottom-[8%] left-0 z-20 rounded-full border border-border bg-background/90 px-4 py-2 text-xs font-medium tracking-wide text-foreground backdrop-blur">People-first products</div>
+            <div className="absolute right-0 top-[17%] z-20 -rotate-6 rounded-full bg-[#f7f2e9] px-4 py-2 text-xs font-medium text-foreground shadow-md">1,800+ farmers reached</div>
+          </motion.div>
+        </div>
+        <div className="mt-8 hidden items-center justify-between border-t border-border pt-4 text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground lg:flex"><span>Available for meaningful work</span><span>Remote-first · Worldwide</span></div>
       </div>
     </section>
   )
