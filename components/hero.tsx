@@ -1,11 +1,24 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { ArrowDown, ArrowUpRight, Github, Linkedin } from "lucide-react"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
+
+const roles = ["Software developer", "Product Manager", "Botanist"]
 
 const portraitUrl = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-11-20%20at%2011.07.26%20PM-PT0pFHJUHfTXzifzynW7kmBCCQvR5x.jpeg"
 
 export default function Hero() {
+  const [roleIndex, setRoleIndex] = useState(0)
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setRoleIndex((currentIndex) => (currentIndex + 1) % roles.length)
+    }, 5000)
+
+    return () => window.clearInterval(intervalId)
+  }, [])
+
   return (
     <section className="relative overflow-hidden px-5 pb-16 pt-28 sm:px-8 sm:pt-32 lg:pb-24 lg:pt-36">
       <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
@@ -14,8 +27,24 @@ export default function Hero() {
             <span className="size-2 rounded-full bg-secondary" /> Available for meaningful work
           </div>
           <h1 className="max-w-3xl text-5xl font-semibold leading-[1.04] tracking-[-0.055em] sm:text-6xl lg:text-7xl xl:text-[5.6rem]">
-            Hi, I&apos;m <span className="text-primary">Safiya.</span><br />
-            I build with <span className="font-serif italic font-normal">purpose.</span>
+            Hi, I&apos;m <span className="text-primary">Safiya.</span>
+            <span className="mt-4 block min-h-[2.2em] text-3xl leading-tight tracking-[-0.04em] sm:text-4xl lg:text-5xl" aria-live="polite" aria-atomic="true">
+              I am a{" "}
+              <span className="inline-block text-primary">
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.span
+                    key={roles[roleIndex]}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.25 }}
+                    className="inline-block font-serif font-normal italic"
+                  >
+                    {roles[roleIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
+            </span>
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl">Software engineer and product manager making useful digital products, and helping ambitious teams bring them to life.</p>
           <p className="mt-4 text-sm font-medium tracking-wide text-muted-foreground">Based in Kaduna, Nigeria · Working everywhere</p>

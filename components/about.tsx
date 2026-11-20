@@ -10,7 +10,8 @@ export default function About() {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
           <h2 className="mb-8 text-4xl font-bold">About Me</h2>
           <div className="flex flex-col gap-5 leading-relaxed text-muted-foreground">
-            <p>I&apos;m a junior web developer with a product management background. I build and deploy responsive websites and web apps with HTML, CSS, JavaScript, and React, and write Python for automation and media projects. I&apos;ve also trained in backend development with Node.js, TypeScript, and MongoDB.</p>
+            <p>I am a Software Engineer with product management background.</p>
+            <p>I build and deploy responsive websites and web apps with HTML, CSS, JavaScript, and React, and write Python for automation and media projects. I&apos;ve also trained in backend development with Node.js, TypeScript, and MongoDB.</p>
             <p>Alongside development, I lead a 25-person team at GraintoX delivering an agritech platform serving more than 1,800 smallholder farmers. I also led the team that built MediKey, a patient-owned health-record MVP using Bitcoin and Nostr.</p>
             <p>I bring a product lead&apos;s habits to engineering: understand users, scope clearly, work collaboratively, and ship on time.</p>
           </div>
