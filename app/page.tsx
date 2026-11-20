@@ -12,7 +12,7 @@ import Contact from "@/components/contact"
 import Footer from "@/components/footer"
 
 export default function Home() {
-  const [isDark, setIsDark] = useState(true)
+  const [isDark, setIsDark] = useState(false)
 
   useEffect(() => {
     const root = document.documentElement
@@ -24,7 +24,7 @@ export default function Home() {
   }, [isDark])
 
   return (
-    <main className="bg-background text-foreground">
+    <main id="top" className="bg-background text-foreground">
       <Navigation isDark={isDark} onThemeToggle={() => setIsDark(!isDark)} />
       <Hero />
       <About />

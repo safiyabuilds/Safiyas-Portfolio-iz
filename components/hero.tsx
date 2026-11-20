@@ -1,35 +1,76 @@
 "use client"
 
-import { ChevronDown, Github, Linkedin } from "lucide-react"
-import { motion } from "framer-motion"
+import { useEffect, useState } from "react"
+import { ArrowDown, ArrowUpRight } from "lucide-react"
+import { AnimatePresence, motion } from "framer-motion"
+import SocialLinks from "./social-links"
+
+const roles = ["Software developer", "Product Manager", "Botanist"]
+
+const portraitUrl = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-11-20%20at%2011.07.26%20PM-PT0pFHJUHfTXzifzynW7kmBCCQvR5x.jpeg"
 
 export default function Hero() {
-  const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" })
-  }
+  const [roleIndex, setRoleIndex] = useState(0)
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setRoleIndex((currentIndex) => (currentIndex + 1) % roles.length)
+    }, 5000)
+
+    return () => window.clearInterval(intervalId)
+  }, [])
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 pt-20">
-      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="animate-shimmer absolute left-10 top-20 size-72 rounded-full bg-primary/20 blur-3xl" />
-        <div className="animate-shimmer absolute bottom-20 right-10 size-72 rounded-full bg-secondary/20 blur-3xl" />
-      </div>
-      <div className="relative z-10 mx-auto max-w-4xl text-center">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          <p className="mb-5 text-sm font-medium uppercase tracking-[0.25em] text-secondary">Kaduna, Nigeria · Open to opportunities</p>
-          <h1 className="mb-6 text-5xl font-bold leading-tight md:text-7xl">Hi, I&apos;m <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">Safiya</span></h1>
-          <p className="mb-6 text-2xl font-light text-muted-foreground md:text-3xl">Software Engineer & Product Manager</p>
-          <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-muted-foreground">I build responsive web products and lead teams that turn real-world challenges into thoughtful digital solutions—from tools serving 1,800+ farmers to patient-owned health records.</p>
+    <section className="relative overflow-hidden px-5 pb-16 pt-28 sm:px-8 sm:pt-32 lg:pb-24 lg:pt-36">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+        <motion.div initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="order-2 lg:order-1">
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground">
+            <span className="size-2 rounded-full bg-secondary" /> Available for meaningful work
+          </div>
+          <h1 className="max-w-3xl text-5xl font-semibold leading-[1.04] tracking-[-0.055em] sm:text-6xl lg:text-7xl xl:text-[5.6rem]">
+            Hi, I&apos;m <span className="text-primary">Safiya.</span>
+            <span className="mt-4 block min-h-[2.2em] text-3xl leading-tight tracking-[-0.04em] sm:text-4xl lg:text-5xl" aria-live="polite" aria-atomic="true">
+              I am a{" "}
+              <span className="inline-block text-primary">
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.span
+                    key={roles[roleIndex]}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.25 }}
+                    className="inline-block font-serif font-normal italic"
+                  >
+                    {roles[roleIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
+            </span>
+          </h1>
+          <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl">Software engineer and product manager making useful digital products, and helping ambitious teams bring them to life.</p>
+          <p className="mt-4 text-sm font-medium tracking-wide text-muted-foreground">Based in Kaduna, Nigeria · Working everywhere</p>
+          <div className="mt-9 flex flex-wrap items-center gap-3">
+            <a href="#projects" className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground transition hover:opacity-90">Explore my work <ArrowDown size={16} /></a>
+            <a href="#contact" className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 font-medium transition hover:border-primary hover:text-primary">Let&apos;s talk <ArrowUpRight size={16} /></a>
+          </div>
+          <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-3">
+            <span className="text-sm text-muted-foreground">Follow <span className="font-semibold text-foreground">@safiyabuilds</span></span>
+            <SocialLinks />
+            <span className="hidden h-px w-10 bg-border sm:block" aria-hidden="true" />
+            <span className="text-sm text-muted-foreground">Web · Product · Impact</span>
+          </div>
         </motion.div>
-        <motion.div className="flex flex-wrap justify-center gap-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
-          <button onClick={() => scrollToSection("projects")} className="rounded-lg bg-primary px-8 py-3 font-semibold text-primary-foreground transition hover:bg-primary/80">Explore my work</button>
-          <button onClick={() => scrollToSection("contact")} className="rounded-lg border border-primary px-8 py-3 font-semibold text-primary transition hover:bg-primary/10">Get in touch</button>
+        <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.12 }} className="relative order-1 mx-auto w-full max-w-[440px] lg:order-2">
+          <div className="absolute -right-3 -top-3 size-24 rounded-full border border-primary/30 sm:-right-5 sm:-top-5 sm:size-32" aria-hidden="true" />
+          <div className="relative overflow-hidden rounded-[44%_44%_18px_18px] bg-card">
+            <img src={portraitUrl} alt="Safiya Muhammad, software engineer and product manager" fetchPriority="high" className="aspect-[4/5] w-full object-cover object-top" />
+          </div>
+          <div className="absolute -bottom-5 left-3 rounded-2xl border border-border bg-background/95 px-4 py-3 shadow-lg backdrop-blur sm:-left-7 sm:px-5">
+            <p className="text-2xl font-semibold tracking-tight">1,800<span className="text-primary">+</span></p>
+            <p className="text-xs text-muted-foreground">farmers reached</p>
+          </div>
+          <span className="absolute bottom-2 right-0 rounded-full bg-secondary px-4 py-2 text-xs font-medium text-secondary-foreground sm:-right-5">People-first products</span>
         </motion.div>
-        <div className="mt-8 flex justify-center gap-5">
-          <a href="https://github.com/Morhsophie" target="_blank" rel="noopener noreferrer" aria-label="Safiya on GitHub" className="text-muted-foreground transition hover:text-primary"><Github size={21} /></a>
-          <a href="https://linkedin.com/in/safiya-muhammad-9a1890236" target="_blank" rel="noopener noreferrer" aria-label="Safiya on LinkedIn" className="text-muted-foreground transition hover:text-secondary"><Linkedin size={21} /></a>
-        </div>
-        <motion.div className="mt-16 flex justify-center" animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }} aria-hidden="true"><ChevronDown size={28} className="text-primary" /></motion.div>
       </div>
     </section>
   )
