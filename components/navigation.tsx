@@ -1,8 +1,6 @@
 const links = [
   { label: "Home", href: "#top" },
   { label: "Web development", href: "#projects" },
-  { label: "App development", href: "#projects" },
-  { label: "UI/UX design", href: "#skills" },
   { label: "My story", href: "#about" },
   { label: "Contact", href: "#contact" },
 ]
