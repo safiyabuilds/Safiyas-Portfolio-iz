@@ -1,8 +1,9 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { ArrowDown, ArrowUpRight, Github, Linkedin } from "lucide-react"
+import { ArrowDown, ArrowUpRight } from "lucide-react"
 import { AnimatePresence, motion } from "framer-motion"
+import SocialLinks from "./social-links"
 
 const roles = ["Software developer", "Product Manager", "Botanist"]
 
@@ -52,10 +53,10 @@ export default function Hero() {
             <a href="#projects" className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground transition hover:opacity-90">Explore my work <ArrowDown size={16} /></a>
             <a href="#contact" className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 font-medium transition hover:border-primary hover:text-primary">Let&apos;s talk <ArrowUpRight size={16} /></a>
           </div>
-          <div className="mt-8 flex items-center gap-5">
-            <a href="https://github.com/Morhsophie" target="_blank" rel="noopener noreferrer" aria-label="Safiya on GitHub" className="text-muted-foreground transition hover:text-primary"><Github size={19} /></a>
-            <a href="https://linkedin.com/in/safiya-muhammad-9a1890236" target="_blank" rel="noopener noreferrer" aria-label="Safiya on LinkedIn" className="text-muted-foreground transition hover:text-primary"><Linkedin size={19} /></a>
-            <span className="h-px w-14 bg-border" />
+          <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-3">
+            <span className="text-sm text-muted-foreground">Follow <span className="font-semibold text-foreground">@safiyabuilds</span></span>
+            <SocialLinks />
+            <span className="hidden h-px w-10 bg-border sm:block" aria-hidden="true" />
             <span className="text-sm text-muted-foreground">Web · Product · Impact</span>
           </div>
         </motion.div>
