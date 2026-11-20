@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Linkedin, Mail, MapPin } from "lucide-react"
+import { MapPin } from "lucide-react"
 
 export default function About() {
   return (
@@ -25,10 +25,6 @@ export default function About() {
               <p><span className="font-semibold text-primary">Impact:</span> Agritech platform with 1,800+ registered farmers</p>
               <p><span className="font-semibold text-primary">Languages:</span> Hausa (native), English (fluent), Arabic (basic)</p>
             </div>
-          </div>
-          <div className="flex gap-4">
-            <a href="https://linkedin.com/in/safiya-muhammad-9a1890236" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" className="flex size-12 items-center justify-center rounded-lg border border-border bg-card transition hover:border-secondary"><Linkedin size={20} className="text-secondary" /></a>
-            <a href="mailto:muhammadsafiya2001@gmail.com" aria-label="Email Safiya" className="flex size-12 items-center justify-center rounded-lg border border-border bg-card transition hover:border-primary"><Mail size={20} className="text-primary" /></a>
           </div>
         </div>
       </div>
