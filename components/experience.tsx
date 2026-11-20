@@ -4,78 +4,27 @@ import { motion } from "framer-motion"
 import { ChevronRight } from "lucide-react"
 
 const experiences = [
-  {
-    title: "Project Manager",
-    company: "Sara Foundation - ArtifyPro",
-    period: "2024 - Present",
-    description:
-      "Led cross-functional team to design and build an AI-powered creative tool. Managed product roadmap, coordinated with stakeholders, and ensured timely delivery of features.",
-    achievements: ["Shipped 3 major features", "Team coordination", "Stakeholder management"],
-  },
-  {
-    title: "Project Lead",
-    company: "Hack4Freedom Hackathon - Team MediKey",
-    period: "2024",
-    description:
-      "Oversaw product strategy and user research for a health-focused web app. Conducted user interviews and validated product-market fit.",
-    achievements: ["Hackathon finalist", "User research", "Product validation"],
-  },
-  {
-    title: "Web Development Intern",
-    company: "Toggle Africa",
-    period: "2023 - 2024",
-    description:
-      "Learning responsive web design, APIs, and collaboration tools. Built several web projects and contributed to client deliverables.",
-    achievements: ["Responsive design", "API integration", "Team collaboration"],
-  },
+  { title: "Project Manager", company: "GraintoX Technologies Limited · Katsina", period: "Dec 2024 – Present", description: "Lead a 25-person team planning and delivering a platform that connects smallholder farmers to markets and financing.", achievements: ["1,800+ registered farmers", "178+ completed transactions", "Partners: NITDA, AFAN & DBN"] },
+  { title: "Team Lead · MediKey", company: "Hack4Freedom · Kaduna", period: "2025", description: "Led a four-person team from problem definition to a working MVP for patient-owned health records, using cryptographic identity and signed, encrypted Nostr events across relays.", achievements: ["Team leadership", "Bitcoin & Nostr", "Health-tech MVP"] },
+  { title: "Web Development Intern", company: "Toggle Africa", period: "2023 – 2024", description: "Practised responsive web design, API integration, and Git-based collaboration; built web projects and contributed to client deliverables.", achievements: ["Responsive web design", "API integration", "Git collaboration"] },
+  { title: "Event Coordinator", company: "Teen Girls in Blockchain (TGIB) · Zaria", period: "Apr 2023 – Apr 2024", description: "Led technology outreach for around 100 secondary school girls and awarded internships in software development, cybersecurity, and project management.", achievements: ["~100 girls reached", "Tech outreach", "Internship awards"] },
 ]
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-20 bg-card/30 border-t border-border">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl font-bold mb-4">Experience</h2>
-          <p className="text-muted-foreground">My professional journey and key accomplishments</p>
+    <section id="experience" className="border-t border-border bg-card/30 py-20">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="mb-16 text-center">
+          <h2 className="mb-4 text-4xl font-bold">Experience</h2>
+          <p className="text-muted-foreground">Building products, leading teams, and creating opportunities.</p>
         </motion.div>
-
-        <div className="space-y-8">
+        <div className="flex flex-col gap-6">
           {experiences.map((exp, index) => (
-            <motion.div
-              key={exp.company}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="group border border-border rounded-lg p-6 hover:border-primary/50 hover:bg-background/50 transition-all duration-300"
-            >
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold flex items-center gap-2">
-                    <ChevronRight size={20} className="text-primary group-hover:translate-x-1 transition-transform" />
-                    {exp.title}
-                  </h3>
-                  <p className="text-secondary font-medium mt-1">{exp.company}</p>
-                  <p className="text-muted-foreground text-sm">{exp.period}</p>
-                </div>
-              </div>
-
-              <p className="text-muted-foreground mb-4">{exp.description}</p>
-
-              <div className="flex gap-2 flex-wrap">
-                {exp.achievements.map((achievement) => (
-                  <span key={achievement} className="text-xs px-3 py-1 bg-primary/20 text-primary rounded-full">
-                    {achievement}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
+            <motion.article key={exp.company} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: index * 0.08 }} viewport={{ once: true }} className="rounded-xl border border-border p-6 transition hover:border-primary/50 hover:bg-background/50">
+              <div className="mb-4"><h3 className="flex items-center gap-2 text-xl font-semibold"><ChevronRight size={20} className="text-primary" />{exp.title}</h3><p className="mt-1 font-medium text-secondary">{exp.company}</p><p className="text-sm text-muted-foreground">{exp.period}</p></div>
+              <p className="mb-4 leading-relaxed text-muted-foreground">{exp.description}</p>
+              <ul className="flex flex-wrap gap-2">{exp.achievements.map((item) => <li key={item} className="rounded-full bg-primary/10 px-3 py-1 text-xs text-primary">{item}</li>)}</ul>
+            </motion.article>
           ))}
         </div>
       </div>

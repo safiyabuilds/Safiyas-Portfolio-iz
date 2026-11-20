@@ -1,76 +1,35 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Linkedin, Mail } from "lucide-react"
+import { Linkedin, Mail, MapPin } from "lucide-react"
 
 export default function About() {
   return (
-    <section id="about" className="py-20 bg-card/50 border-t border-border">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="grid md:grid-cols-2 gap-12 items-center"
-        >
-          <div>
-            <h2 className="text-4xl font-bold mb-8">About Me</h2>
-            <div className="space-y-6 text-muted-foreground leading-relaxed">
-              <p>
-                I'm a Project Manager and Junior Web Developer passionate about using technology to solve real-world
-                problems. I currently manage projects at Sara Foundation's ArtifyPro, and led Team MediKey at the
-                Hack4Freedom Hackathon.
-              </p>
-              <p>
-                I love creating user-centered solutions that merge innovation with impact. My approach combines
-                strategic thinking with hands-on execution, ensuring that every project delivers measurable value.
-              </p>
-              <p>
-                When I'm not building products, you'll find me exploring new technologies, mentoring aspiring
-                developers, or working on creative projects that push the boundaries of what's possible.
-              </p>
-            </div>
-          </div>
-
-          <div className="space-y-8">
-            <div className="bg-background rounded-xl p-8 border border-border hover:border-primary/50 transition-colors">
-              <h3 className="text-xl font-semibold mb-4">Quick Facts</h3>
-              <div className="space-y-3 text-muted-foreground">
-                <p>
-                  <span className="text-primary font-semibold">Location:</span> Nigeria
-                </p>
-                <p>
-                  <span className="text-primary font-semibold">Role:</span> Project Manager & Developer
-                </p>
-                <p>
-                  <span className="text-primary font-semibold">Experience:</span> ArtifyPro, Hack4Freedom, Toggle Africa
-                </p>
-                <p>
-                  <span className="text-primary font-semibold">Skills:</span> Project Management, Web Development,
-                  Product Strategy
-                </p>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <a
-                href="https://linkedin.com/in/safiya-muhammad-9a1890236"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center w-12 h-12 bg-card border border-border hover:border-secondary rounded-lg transition-all hover:bg-secondary/10"
-              >
-                <Linkedin size={20} className="text-secondary" />
-              </a>
-              <a
-                href="mailto:muhammadsafiya2001@gmail.com"
-                className="flex items-center justify-center w-12 h-12 bg-card border border-border hover:border-primary rounded-lg transition-all hover:bg-primary/10"
-              >
-                <Mail size={20} className="text-primary" />
-              </a>
-            </div>
+    <section id="about" className="border-t border-border bg-card/50 py-20">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
+          <h2 className="mb-8 text-4xl font-bold">About Me</h2>
+          <div className="flex flex-col gap-5 leading-relaxed text-muted-foreground">
+            <p>I&apos;m a junior web developer with a product management background. I build and deploy responsive websites and web apps with HTML, CSS, JavaScript, and React, and write Python for automation and media projects. I&apos;ve also trained in backend development with Node.js, TypeScript, and MongoDB.</p>
+            <p>Alongside development, I lead a 25-person team at GraintoX delivering an agritech platform serving more than 1,800 smallholder farmers. I also led the team that built MediKey, a patient-owned health-record MVP using Bitcoin and Nostr.</p>
+            <p>I bring a product lead&apos;s habits to engineering: understand users, scope clearly, work collaboratively, and ship on time.</p>
           </div>
         </motion.div>
+        <div className="flex flex-col gap-6">
+          <div className="rounded-xl border border-border bg-background p-8">
+            <h3 className="mb-5 text-xl font-semibold">At a glance</h3>
+            <div className="flex flex-col gap-4 text-muted-foreground">
+              <p className="flex items-center gap-3"><MapPin className="text-primary" size={18} />Kaduna, Nigeria</p>
+              <p><span className="font-semibold text-primary">Focus:</span> Web development & product leadership</p>
+              <p><span className="font-semibold text-primary">Impact:</span> Agritech platform with 1,800+ registered farmers</p>
+              <p><span className="font-semibold text-primary">Languages:</span> Hausa (native), English (fluent), Arabic (basic)</p>
+            </div>
+          </div>
+          <div className="flex gap-4">
+            <a href="https://linkedin.com/in/safiya-muhammad-9a1890236" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" className="flex size-12 items-center justify-center rounded-lg border border-border bg-card transition hover:border-secondary"><Linkedin size={20} className="text-secondary" /></a>
+            <a href="mailto:muhammadsafiya2001@gmail.com" aria-label="Email Safiya" className="flex size-12 items-center justify-center rounded-lg border border-border bg-card transition hover:border-primary"><Mail size={20} className="text-primary" /></a>
+          </div>
+        </div>
       </div>
     </section>
   )
