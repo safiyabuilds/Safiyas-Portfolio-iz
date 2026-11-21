@@ -12,24 +12,35 @@ export default function Contact() {
     email: "",
     message: "",
   })
-  const [submitted, setSubmitted] = useState(false)
+  const [submissionStatus, setSubmissionStatus] = useState<"idle" | "sending" | "success" | "error">("idle")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
+    const { name, value } = e.target
+    setFormData((current) => ({ ...current, [name]: value }))
+    if (submissionStatus === "error") setSubmissionStatus("idle")
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // In production, you would send this to a backend or email service
-    console.log("Form submitted:", formData)
-    setSubmitted(true)
-    setTimeout(() => {
+    setSubmissionStatus("sending")
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/muhammadsafiya2001@gmail.com", {
+        method: "POST",
+        body: new FormData(e.currentTarget),
+        headers: { Accept: "application/json" },
+      })
+      const result = await response.json()
+
+      if (!response.ok || (result.success !== true && result.success !== "true")) {
+        throw new Error("Form submission failed")
+      }
+
       setFormData({ name: "", email: "", message: "" })
-      setSubmitted(false)
-    }, 3000)
+      setSubmissionStatus("success")
+    } catch {
+      setSubmissionStatus("error")
+    }
   }
 
   return (
@@ -102,6 +113,8 @@ export default function Contact() {
             onSubmit={handleSubmit}
             className="space-y-4"
           >
+            <input type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
+            <input type="hidden" name="_subject" value="New message from your portfolio" />
             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-2">
                 Name
@@ -150,12 +163,19 @@ export default function Contact() {
               ></textarea>
             </div>
 
+            {submissionStatus === "success" && (
+              <p role="status" className="text-sm text-green-700">Message sent successfully. Thank you for reaching out.</p>
+            )}
+            {submissionStatus === "error" && (
+              <p role="alert" className="text-sm text-destructive">Your message could not be sent. Please try again or email me directly.</p>
+            )}
             <button
               type="submit"
-              className="w-full px-6 py-3 bg-primary hover:bg-primary/80 text-primary-foreground rounded-lg font-semibold transition-all flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-primary/50"
+              disabled={submissionStatus === "sending"}
+              className="w-full px-6 py-3 bg-primary hover:bg-primary/80 text-primary-foreground rounded-lg font-semibold transition-all flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-primary/50 disabled:cursor-not-allowed disabled:opacity-70"
             >
-              <Send size={20} />
-              {submitted ? "Message Sent!" : "Send Message"}
+              <Send size={20} aria-hidden="true" />
+              {submissionStatus === "sending" ? "Sending..." : submissionStatus === "success" ? "Message Sent!" : "Send Message"}
             </button>
           </motion.form>
         </div>
