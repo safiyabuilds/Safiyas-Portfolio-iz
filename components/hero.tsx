@@ -1,11 +1,11 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { ArrowDown, Plus } from "lucide-react"
+import { ArrowDown, ArrowUpRight } from "lucide-react"
 import { AnimatePresence, motion } from "framer-motion"
 import SocialLinks from "./social-links"
 
-const roles = ["Software Engineer", "Product Manager", "Botanist"]
+const roles = ["Software Engineer", "Product Manager"]
 const portraitUrl = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-11-20%20at%2011.07.26%20PM-PT0pFHJUHfTXzifzynW7kmBCCQvR5x.jpeg"
 
 export default function Hero() {
@@ -24,7 +24,7 @@ export default function Hero() {
       <div className="mx-auto flex min-h-[inherit] max-w-6xl flex-col justify-center">
         <div className="mb-10 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground sm:mb-12">
           <span className="size-2 rounded-full bg-[#78916c]" aria-hidden="true" />
-          Independent builder · Nigeria
+          Open to software engineering and product roles · Nigeria
         </div>
         <div className="grid items-center gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:gap-0">
           <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="relative z-10 order-1 pb-5 lg:order-1 lg:pb-0">
@@ -44,7 +44,7 @@ export default function Hero() {
             </div>
             <p className="mt-8 max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">I build useful digital products and help ambitious teams bring thoughtful ideas to life.</p>
             <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
-              <a href="#contact" className="inline-flex items-center gap-3 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition hover:bg-primary">Start a project <span className="flex size-7 items-center justify-center rounded-full bg-background/15"><Plus size={15} /></span></a>
+              <a href="/safiya-muhammad-cv.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition hover:bg-primary">View my CV <span className="flex size-7 items-center justify-center rounded-full bg-background/15"><ArrowUpRight size={15} aria-hidden="true" /></span></a>
               <a href="#projects" className="inline-flex items-center gap-2 text-sm font-medium text-foreground underline decoration-border underline-offset-4 transition hover:decoration-foreground">See my work <ArrowDown size={15} /></a>
             </div>
             <div className="mt-7 flex items-center gap-4 text-sm text-muted-foreground"><span>Find me</span><SocialLinks /><span className="hidden sm:inline">Web · Product · Impact</span></div>
