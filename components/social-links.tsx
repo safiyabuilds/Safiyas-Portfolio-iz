@@ -15,14 +15,14 @@ const socialProfiles: SocialProfile[] = [
   {
     name: "Instagram",
     icon: "instagram",
-    href: "https://instagram.com/safiyabuilds",
-    label: "@safiyabuilds",
+    href: "https://instagram.com/safiyabuilds7",
+    label: "@safiyabuilds7",
   },
   {
     name: "Twitter",
     icon: "twitter",
-    href: "https://twitter.com/safiyabuilds",
-    label: "@safiyabuilds",
+    href: "https://twitter.com/muhammadsafiyy2",
+    label: "@muhammadsafiyy2",
   },
   {
     name: "TikTok",
