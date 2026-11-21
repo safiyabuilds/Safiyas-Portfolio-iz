@@ -1,6 +1,7 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { useState } from "react"
+import { AnimatePresence, motion } from "framer-motion"
 import {
   Aperture,
   ArrowUpRight,
@@ -26,6 +27,7 @@ type PortfolioProject = {
   brandColor?: string
   live?: string
   code?: string
+  video?: string
   style: string
 }
 
@@ -40,6 +42,7 @@ const projects: PortfolioProject[] = [
     logoImage: "https://graintox.com/favicon.png",
     brandColor: "#2f7f3f",
     live: "https://graintox.com",
+    video: "/videos/graintox-demo.mp4",
     style: "bg-[#f0f5ef]",
   },
   {
@@ -53,6 +56,7 @@ const projects: PortfolioProject[] = [
     brandColor: "#d2691e",
     live: "https://medikey-azure.vercel.app/",
     code: "https://github.com/medikey/medikey",
+    video: "/videos/medikey-demo.mp4",
     style: "bg-[#fbf2e9]",
   },
   {
@@ -104,40 +108,82 @@ const projects: PortfolioProject[] = [
 ]
 
 export default function Projects() {
+  const [openProjects, setOpenProjects] = useState<Record<string, boolean>>({})
+
   return (
-    <section id="projects" className="border-t border-border px-5 py-20 sm:px-8 lg:py-28">
+    <section id="projects" className="border-t border-border px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
-          <div><p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary">A few projects I&apos;ve helped build</p><h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">My work, one door<br className="hidden sm:block" /> per skill.</h2></div>
-          <p className="max-w-sm text-muted-foreground">From thoughtful interfaces to backend systems and playful experiments, here&apos;s where ideas became real.</p>
+        <div className="mb-12 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-primary">A few things I&apos;ve helped build</p>
+            <h2 className="text-4xl font-semibold tracking-[-0.06em] sm:text-5xl">My work, one door<br className="hidden sm:block" /> per project.</h2>
+          </div>
+          <p className="max-w-sm text-base leading-relaxed text-muted-foreground">Choose a door to step inside each project and see the work behind it.</p>
         </div>
-        <div className="grid gap-5 md:grid-cols-2">
+
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => {
             const Logo = project.logo
+            const isOpen = Boolean(openProjects[project.number])
+            const detailsId = `project-details-${project.number}`
 
             return (
-              <motion.article key={project.number} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: (index % 2) * 0.08 }} viewport={{ once: true }} className="group overflow-hidden rounded-2xl border border-border bg-card">
-                <div
-                  className={`${project.style} relative flex min-h-48 items-center justify-between gap-4 overflow-hidden px-6 py-8 sm:min-h-56 sm:px-8`}
-                  style={project.brandColor ? { backgroundImage: `linear-gradient(135deg, ${project.brandColor}14, transparent 72%)` } : undefined}
-                >
-                  <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-8 z-0 flex w-3/5 items-center justify-center opacity-[0.16] transition-transform duration-500 group-hover:scale-105">
-                    {project.logoImage ? <img src={project.logoImage} alt="" className="size-40 object-contain mix-blend-multiply sm:size-52" /> : <Logo className="size-40 text-foreground/80 sm:size-52" strokeWidth={1.05} />}
-                  </div>
-                  <div className="relative z-10 flex min-w-0 flex-1 flex-col items-start gap-3">
-                    <div className="flex flex-wrap items-center gap-2.5">
-                      <span className="font-mono text-xs font-semibold tracking-[0.18em] text-foreground/45">{project.number}</span>
-                      <span className="inline-flex rounded-full border border-foreground/15 bg-white/45 px-3 py-1 text-xs font-medium text-foreground/70">{project.category}</span>
+              <motion.article key={project.number} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: (index % 3) * 0.06 }} viewport={{ once: true }} className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+                <div className="relative [perspective:1100px]">
+                  <div className={`${project.style} relative h-64 overflow-hidden sm:h-72`}>
+                    <div aria-hidden="true" className="absolute inset-0 flex items-center justify-center opacity-[0.13]">
+                      {project.logoImage ? <img src={project.logoImage} alt="" className="size-40 object-contain mix-blend-multiply sm:size-48" /> : <Logo className="size-40 text-foreground sm:size-48" strokeWidth={0.9} />}
                     </div>
-                    <h3 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">{project.title}</h3>
+                    <div aria-hidden="true" className="absolute inset-3 border border-foreground/15" />
                   </div>
-                  <div className="relative z-20 flex size-11 shrink-0 items-center justify-center rounded-full border border-foreground/20 text-foreground transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:bg-foreground group-hover:text-background"><ArrowUpRight size={20} /></div>
+
+                  <motion.button
+                    type="button"
+                    aria-expanded={isOpen}
+                    aria-controls={detailsId}
+                    aria-label={`${isOpen ? "Close" : "Open"} the ${project.title} project door`}
+                    onClick={() => setOpenProjects((current) => ({ ...current, [project.number]: !current[project.number] }))}
+                    animate={{ rotateY: isOpen ? -62 : 0 }}
+                    whileHover={{ scale: isOpen ? 1 : 1.01 }}
+                    transition={{ type: "spring", stiffness: 95, damping: 16 }}
+                    style={{ transformOrigin: "left center", transformStyle: "preserve-3d" }}
+                    className={`${project.style} absolute inset-0 flex flex-col justify-between border-y border-r border-border px-6 py-6 text-left shadow-[inset_10px_0_0_rgba(0,0,0,0.04)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary`}
+                  >
+                    <span aria-hidden="true" className="absolute inset-3 border border-foreground/15" />
+                    <span className="relative z-10 flex items-center justify-between text-xs font-semibold uppercase tracking-[0.18em] text-foreground/60">
+                      <span>{project.number}</span>
+                      <span className="size-2 rounded-full bg-foreground/25" />
+                    </span>
+                    <span className="relative z-10">
+                      <span className="mb-2 block text-xs font-medium uppercase tracking-[0.14em] text-foreground/55">{project.category}</span>
+                      <span className="block text-3xl font-semibold tracking-[-0.05em] text-foreground">{project.title}</span>
+                    </span>
+                    <span className="relative z-10 inline-flex items-center gap-2 text-sm font-medium text-foreground">
+                      {isOpen ? "Close the door" : project.video ? "Watch demo" : "Open project"}
+                      <ArrowUpRight size={16} aria-hidden="true" />
+                    </span>
+                    <span aria-hidden="true" className="absolute right-5 top-1/2 size-3 -translate-y-1/2 rounded-full border border-foreground/35 bg-foreground/10 shadow-sm" />
+                  </motion.button>
                 </div>
-                <div className="p-6 sm:p-8">
-                  <p className="leading-relaxed text-muted-foreground">{project.description}</p>
-                  <ul className="mt-5 flex flex-wrap gap-2">{project.tags.map((tag) => <li key={tag} className="rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground">{tag}</li>)}</ul>
-                  {(project.live || project.code) && <div className="mt-6 flex gap-5 border-t border-border pt-4">{project.live && <a href={project.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-muted-foreground transition hover:text-primary"><ExternalLink size={15} />Live project</a>}{project.code && <a href={project.code} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-muted-foreground transition hover:text-primary"><Github size={15} />Code</a>}</div>}
-                </div>
+
+                <motion.div id={detailsId} aria-hidden={!isOpen} inert={!isOpen} initial={false} animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }} transition={{ duration: 0.3, ease: "easeInOut" }} className="overflow-hidden">
+                  <div className="border-t border-border p-5 sm:p-6">
+                    {project.video && isOpen && (
+                      <div className="mb-5">
+                        <p id={`project-video-title-${project.number}`} className="mb-2 text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">{project.title} demo</p>
+                        <video aria-labelledby={`project-video-title-${project.number}`} autoPlay muted playsInline controls preload="auto" className="aspect-video w-full rounded-xl border border-border bg-muted object-cover">
+                          <source src={project.video} type="video/mp4" />
+                          Your browser does not support embedded video.
+                        </video>
+                      </div>
+                    )}
+                    <p className="leading-relaxed text-muted-foreground">{project.description}</p>
+                    <ul className="mt-5 flex flex-wrap gap-2" aria-label={`${project.title} technologies and focus`}>
+                      {project.tags.map((tag) => <li key={tag} className="rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground">{tag}</li>)}
+                    </ul>
+                    {(project.live || project.code) && <div className="mt-6 flex flex-wrap gap-5 border-t border-border pt-4">{project.live && <a href={project.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-muted-foreground transition hover:text-primary"><ExternalLink size={15} aria-hidden="true" />Live project</a>}{project.code && <a href={project.code} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-muted-foreground transition hover:text-primary"><Github size={15} aria-hidden="true" />Code</a>}</div>}
+                  </div>
+                </motion.div>
               </motion.article>
             )
           })}
