@@ -14,12 +14,17 @@ const links = [
 export default function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [darkPortfolio, setDarkPortfolio] = useState(false)
-  const [time, setTime] = useState(() => new Date())
+  const [time, setTime] = useState<Date | null>(null)
 
   useEffect(() => {
-    const timer = window.setInterval(() => setTime(new Date()), 60_000)
+    const updateTime = () => setTime(new Date())
+    updateTime()
+    const timer = window.setInterval(updateTime, 60_000)
     return () => window.clearInterval(timer)
   }, [])
+
+  const timeLabel = time?.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }) ?? "—"
+  const dateLabel = time?.toLocaleDateString([], { day: "numeric", month: "long", year: "numeric" }) ?? "—"
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark-portfolio", darkPortfolio)
@@ -33,9 +38,9 @@ export default function Navigation() {
           {links.map((link) => <a key={link.label} href={link.href} className="transition-colors hover:text-foreground">{link.label}</a>)}
         </div>
         <div className="ml-auto flex items-center gap-2 md:ml-0">
-          <div aria-label={`Local time ${time.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}`} className="rounded-full border border-border bg-card/80 px-2.5 py-2 text-[11px] text-muted-foreground sm:px-3 sm:text-xs">
-            <span className="sm:hidden">{time.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}</span>
-            <span className="hidden sm:inline">Local time&nbsp; <strong className="font-semibold text-foreground">{time.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}</strong>&nbsp; · &nbsp;{time.toLocaleDateString([], { day: "numeric", month: "long", year: "numeric" })}</span>
+          <div aria-label={time ? `Local time ${timeLabel}` : "Local time loading"} className="rounded-full border border-border bg-card/80 px-2.5 py-2 text-[11px] text-muted-foreground sm:px-3 sm:text-xs">
+            <span className="sm:hidden">{timeLabel}</span>
+            <span className="hidden sm:inline">Local time&nbsp; <strong className="font-semibold text-foreground">{timeLabel}</strong>&nbsp; · &nbsp;{dateLabel}</span>
           </div>
           <button type="button" aria-label={darkPortfolio ? "Turn off dark background" : "Turn on dark background"} aria-pressed={darkPortfolio} onClick={() => setDarkPortfolio((current) => !current)} className="relative flex h-11 w-9 shrink-0 items-end justify-center pb-1 text-foreground transition hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" title="Pull to toggle dark background">
             <span aria-hidden="true" className="absolute left-1/2 top-0 h-6 w-px -translate-x-1/2 bg-border" />
