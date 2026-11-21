@@ -27,6 +27,7 @@ type PortfolioProject = {
   brandColor?: string
   live?: string
   code?: string
+  video?: string
   style: string
 }
 
@@ -41,6 +42,7 @@ const projects: PortfolioProject[] = [
     logoImage: "https://graintox.com/favicon.png",
     brandColor: "#2f7f3f",
     live: "https://graintox.com",
+    video: "/videos/graintox-demo.mp4",
     style: "bg-[#f0f5ef]",
   },
   {
@@ -54,6 +56,7 @@ const projects: PortfolioProject[] = [
     brandColor: "#d2691e",
     live: "https://medikey-azure.vercel.app/",
     code: "https://github.com/medikey/medikey",
+    video: "/videos/medikey-demo.mp4",
     style: "bg-[#fbf2e9]",
   },
   {
@@ -156,7 +159,7 @@ export default function Projects() {
                       <span className="block text-3xl font-semibold tracking-[-0.05em] text-foreground">{project.title}</span>
                     </span>
                     <span className="relative z-10 inline-flex items-center gap-2 text-sm font-medium text-foreground">
-                      {isOpen ? "Close the door" : "Open project"}
+                      {isOpen ? "Close the door" : project.video ? "Watch demo" : "Open project"}
                       <ArrowUpRight size={16} aria-hidden="true" />
                     </span>
                     <span aria-hidden="true" className="absolute right-5 top-1/2 size-3 -translate-y-1/2 rounded-full border border-foreground/35 bg-foreground/10 shadow-sm" />
@@ -165,6 +168,15 @@ export default function Projects() {
 
                 <motion.div id={detailsId} aria-hidden={!isOpen} inert={!isOpen} initial={false} animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }} transition={{ duration: 0.3, ease: "easeInOut" }} className="overflow-hidden">
                   <div className="border-t border-border p-5 sm:p-6">
+                    {project.video && isOpen && (
+                      <div className="mb-5">
+                        <p id={`project-video-title-${project.number}`} className="mb-2 text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">{project.title} demo</p>
+                        <video aria-labelledby={`project-video-title-${project.number}`} autoPlay muted playsInline controls preload="auto" className="aspect-video w-full rounded-xl border border-border bg-muted object-cover">
+                          <source src={project.video} type="video/mp4" />
+                          Your browser does not support embedded video.
+                        </video>
+                      </div>
+                    )}
                     <p className="leading-relaxed text-muted-foreground">{project.description}</p>
                     <ul className="mt-5 flex flex-wrap gap-2" aria-label={`${project.title} technologies and focus`}>
                       {project.tags.map((tag) => <li key={tag} className="rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground">{tag}</li>)}
