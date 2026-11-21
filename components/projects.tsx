@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
-import ProjectVideoDemo from "./project-video-demo"
 import {
   Aperture,
   ArrowUpRight,
@@ -30,7 +29,6 @@ type PortfolioProject = {
   live?: string
   code?: string
   video?: string
-  videoOrientation?: "portrait" | "landscape"
   style: string
 }
 
@@ -93,7 +91,6 @@ const projects: PortfolioProject[] = [
     live: "https://morhsophie.github.io/Birth-flower/",
     code: "https://github.com/Morhsophie/Birth-flower",
     video: "/videos/birth-flower-demo.mp4",
-    videoOrientation: "portrait",
     style: "bg-[#eee5dc]",
   },
   {
@@ -216,11 +213,13 @@ export default function Projects() {
                       </button>
                     </div>
                     {project.video && isOpen && (
-                      <ProjectVideoDemo
-                        title={project.title}
-                        src={project.video}
-                        orientation={project.videoOrientation}
-                      />
+                      <div className="mb-5">
+                        <p id={`project-video-title-${project.number}`} className="mb-2 text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">{project.title} demo</p>
+                        <video aria-labelledby={`project-video-title-${project.number}`} autoPlay muted playsInline controls preload="auto" className="aspect-video w-full rounded-xl border border-border bg-muted object-cover">
+                          <source src={project.video} type="video/mp4" />
+                          Your browser does not support embedded video.
+                        </video>
+                      </div>
                     )}
                     <p className="leading-relaxed text-muted-foreground">{project.description}</p>
                     <ul className="mt-5 flex flex-wrap gap-2" aria-label={`${project.title} technologies and focus`}>
