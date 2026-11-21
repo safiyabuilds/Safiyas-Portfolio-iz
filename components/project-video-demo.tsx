@@ -6,17 +6,16 @@ type ProjectVideoDemoProps = {
 
 export default function ProjectVideoDemo({ title, src, orientation = "landscape" }: ProjectVideoDemoProps) {
   return (
-    <figure className="relative mx-auto mb-5 flex aspect-[9/16] w-full max-w-[340px] flex-col overflow-hidden rounded-[1.35rem] border border-white/10 bg-[#120f0c] px-6 pb-7 pt-8 text-[#f7f3ec] shadow-[0_26px_60px_rgba(18,16,13,0.28)]">
-      <div aria-hidden="true" className="pointer-events-none absolute -right-16 top-[26%] size-56 rounded-full bg-[#d9b676]/10 blur-3xl" />
+    <figure className="relative mx-auto mb-5 flex aspect-[9/16] w-full max-w-[340px] flex-col overflow-hidden rounded-[0.75rem] bg-[#100d08] px-6 pb-7 pt-12 text-[#f7f3ec] shadow-[0_26px_60px_rgba(18,16,13,0.28)]">
       <div className="relative z-10">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#d9b676]">Project walkthrough</p>
-        <h3 className="mt-4 max-w-[16rem] text-[2rem] font-semibold leading-[1.02] tracking-[-0.06em] sm:text-[2.2rem]">
+        <h3 className="max-w-[17rem] text-[2rem] font-semibold leading-[1.02] tracking-[-0.06em] sm:text-[2.2rem]">
+          No doubt<br />
           {title}<br />
-          <span className="text-white/80">in action.</span>
+          <span className="text-white/80">is a flex.</span>
         </h3>
       </div>
       <div className="relative z-10 mt-auto pb-8 pt-10 [perspective:1100px]">
-        <div className="relative mx-auto w-[112%] -translate-x-[6%] [transform:rotateX(3deg)_rotateY(-7deg)_rotateZ(-4deg)]" style={{ transformStyle: "preserve-3d" }}>
+        <div className="relative mx-auto w-[116%] -translate-x-[8%] [transform:rotateX(3deg)_rotateY(-7deg)_rotateZ(-4deg)]" style={{ transformStyle: "preserve-3d" }}>
           <div className="relative rounded-t-[0.85rem] border-[6px] border-[#39352f] bg-[#0d0c0b] px-1.5 pb-2 pt-2 shadow-[0_12px_32px_rgba(0,0,0,0.55)]">
             <span aria-hidden="true" className="absolute left-1/2 top-[2px] size-[3px] -translate-x-1/2 rounded-full bg-[#8d867a]" />
             <div className="aspect-video overflow-hidden rounded-[0.25rem] bg-black">
@@ -25,6 +24,7 @@ export default function ProjectVideoDemo({ title, src, orientation = "landscape"
                 autoPlay
                 muted
                 playsInline
+                loop
                 controls
                 preload="metadata"
                 className={`size-full ${orientation === "portrait" ? "object-contain" : "object-cover"}`}
