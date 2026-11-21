@@ -18,14 +18,14 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative overflow-hidden px-5 pb-16 pt-32 sm:px-8 sm:pb-24 sm:pt-36 lg:min-h-[calc(100svh-76px)] lg:px-12 lg:pb-8 lg:pt-10">
+    <section className="hero-section relative overflow-hidden px-5 pb-16 pt-32 sm:px-8 sm:pb-24 sm:pt-36 lg:min-h-[calc(100svh-76px)] lg:px-12 lg:pb-8 lg:pt-10">
       <div className="mx-auto flex min-h-[inherit] max-w-6xl flex-col justify-center">
         <div className="mb-10 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground sm:mb-12 lg:mb-6">
           <span className="size-2 rounded-full bg-[#78916c]" aria-hidden="true" />
           Open to web development and project management roles · Nigeria
         </div>
         <div className="grid items-center gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:gap-0">
-          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="relative z-10 order-1 pb-5 lg:order-1 lg:pb-0">
+          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="hero-copy relative z-10 order-1 pb-5 lg:order-1 lg:pb-0">
             <h1 className="text-[clamp(3rem,5.8vw,5rem)] font-semibold leading-[0.88] tracking-[-0.075em]">
               Hi, I&apos;m<br />Safiya<span className="text-primary">.</span>
             </h1>

@@ -173,6 +173,64 @@ body {
   transition: filter 500ms ease;
 }
 
+.dark-portfolio .hero-copy h1 {
+  color: #f6f0e9;
+}
+
+.dark-portfolio .hero-copy > p {
+  color: #c9c1b8;
+}
+
+.dark-portfolio header {
+  border-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(27, 25, 24, 0.96);
+  color: #f6f0e9;
+}
+
+.dark-portfolio header a {
+  color: #e5ded7;
+}
+
+.dark-portfolio header a:hover {
+  color: #fff;
+}
+
+.dark-portfolio .role-portfolios {
+  background: linear-gradient(180deg, #211f1e 0%, #171515 76%, #0d0c0c 100%);
+  color: #f4eee7;
+}
+
+.dark-portfolio .role-portfolios .text-muted-foreground {
+  color: #c7beb5;
+}
+
+.dark-portfolio .role-portfolios .text-primary {
+  color: #e1bf94;
+}
+
+.dark-portfolio .role-interior {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: linear-gradient(180deg, #262321, #171514 90%);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.dark-portfolio .role-interior__wall::before {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: linear-gradient(180deg, #b8a892, #766b60);
+}
+
+.dark-portfolio .project-showcase {
+  color: #211d19;
+}
+
+.dark-portfolio .project-showcase .text-muted-foreground {
+  color: #5e5852;
+}
+
+.dark-portfolio .project-showcase .text-primary {
+  color: #8f4c32;
+}
+
 .project-showcase {
   scroll-margin-top: 6rem;
 }
