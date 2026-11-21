@@ -225,12 +225,12 @@ html.role-view-open #projects {
 }
 
 .dark-portfolio .hero-portrait-frame {
-  background: #b56c4c;
+  background: #000;
   padding: 0.5rem 0.5rem 0;
 }
 
 .dark-portfolio .hero-portrait {
-  filter: none;
+  filter: grayscale(1) contrast(1.08);
 }
 
 .dark-portfolio .skills-card {
