@@ -5,7 +5,7 @@ import { ArrowDown, ArrowUpRight } from "lucide-react"
 import { AnimatePresence, motion } from "framer-motion"
 import SocialLinks from "./social-links"
 
-const roles = ["Software Engineer", "Product Manager"]
+const roles = ["Software Development", "Product Manager", "Botanist"]
 const portraitUrl = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-11-20%20at%2011.07.26%20PM-PT0pFHJUHfTXzifzynW7kmBCCQvR5x.jpeg"
 
 export default function Hero() {
@@ -14,7 +14,7 @@ export default function Hero() {
   useEffect(() => {
     const intervalId = window.setInterval(() => {
       setRoleIndex((currentIndex) => (currentIndex + 1) % roles.length)
-    }, 3500)
+    }, 5000)
 
     return () => window.clearInterval(intervalId)
   }, [])
@@ -32,11 +32,11 @@ export default function Hero() {
               Hi, I&apos;m<br />Safiya<span className="text-primary">.</span>
             </h1>
             <p className="mt-5 text-2xl font-medium tracking-[-0.045em] text-muted-foreground sm:text-3xl">I am a</p>
-            <div className="relative mt-1 max-w-[min(100%,34rem)] -rotate-1 border border-[#d8cfc0] bg-[#f7f2e9] px-5 py-5 shadow-[5px_7px_0_#28231d] sm:px-8 sm:py-6">
+            <div className="relative mt-1 w-fit max-w-full -rotate-1 border border-[#d8cfc0] bg-[#f7f2e9] px-5 py-5 shadow-[5px_7px_0_#28231d] sm:px-8 sm:py-6">
               <div aria-hidden="true" className="absolute -top-[11px] left-5 right-5 flex justify-between sm:left-8 sm:right-8">
                 {Array.from({ length: 8 }, (_, index) => <span key={index} className="size-[18px] rounded-full border-2 border-[#b8ad9c] bg-background" />)}
               </div>
-              <div className="min-h-[1.2em] text-[clamp(2rem,5.2vw,4.1rem)] font-semibold leading-none tracking-[-0.065em] text-foreground" aria-live="polite" aria-atomic="true">
+              <div className="whitespace-nowrap text-[clamp(1.65rem,5vw,3.8rem)] font-semibold leading-none tracking-[-0.065em] text-foreground" aria-live="polite" aria-atomic="true">
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.span key={roles[roleIndex]} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="block">{roles[roleIndex]}</motion.span>
                 </AnimatePresence>
