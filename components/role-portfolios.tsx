@@ -212,12 +212,12 @@ export default function RolePortfolios() {
   }
 
   return (
-    <section id="projects" aria-labelledby="doors-heading" className="role-portfolios scroll-mt-20 px-4 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-28">
+    <section id="projects" aria-labelledby="doors-heading" className="role-portfolios scroll-mt-20 px-4 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12">
       <div className="mx-auto max-w-7xl">
         {!enteredRole && <>
-        <div className="mx-auto mb-12 max-w-4xl text-center sm:mb-16">
+        <div className="mx-auto mb-6 max-w-4xl text-center sm:mb-8">
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">Web · Product · Impact</p>
-          <h2 id="doors-heading" className="text-4xl font-semibold tracking-[-0.065em] sm:text-6xl lg:text-7xl">Magic happens behind the doors</h2>
+          <h2 id="doors-heading" className="text-3xl font-semibold tracking-[-0.065em] sm:text-5xl lg:text-6xl">Magic happens behind the doors</h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">Choose a role to explore the work, craft and decisions behind it.</p>
         </div>
 

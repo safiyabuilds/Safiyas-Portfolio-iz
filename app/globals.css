@@ -220,13 +220,17 @@ html.role-view-open #projects {
   --border: #d7cfc4;
 }
 
+.hero-portrait-frame {
+  background: transparent;
+}
+
 .dark-portfolio .hero-portrait-frame {
-  background: #000;
+  background: #b56c4c;
+  padding: 0.5rem 0.5rem 0;
 }
 
 .dark-portfolio .hero-portrait {
-  filter: grayscale(1) brightness(0.55);
-  transition: filter 500ms ease;
+  filter: none;
 }
 
 .dark-portfolio .skills-card {
@@ -337,7 +341,14 @@ video {
 }
 
 .role-portfolios {
+  display: flex;
+  min-height: calc(100svh - 4.75rem);
+  align-items: center;
   background: linear-gradient(180deg, #e7e2dc 0%, #d9d3cc 76%, #d1c9c1 100%);
+}
+
+.role-portfolios > div {
+  width: 100%;
 }
 
 .role-doorway {
@@ -346,7 +357,7 @@ video {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: end;
   gap: clamp(1rem, 3vw, 2.5rem);
-  padding: 1.5rem 0 0;
+  padding: 0.5rem 0 0;
 }
 
 .role-doorway::after {
@@ -366,7 +377,7 @@ video {
   z-index: 1;
   display: grid;
   min-width: 0;
-  min-height: 25rem;
+  min-height: 18rem;
   grid-template-columns: minmax(135px, 0.62fr) minmax(0, 1fr);
   align-items: end;
   gap: clamp(0.85rem, 2vw, 1.75rem);
@@ -378,7 +389,7 @@ video {
   position: relative;
   display: flex;
   width: min(100%, 13rem);
-  height: 23rem;
+  height: 16rem;
   align-self: end;
   flex-direction: column;
   justify-content: flex-end;
