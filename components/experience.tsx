@@ -97,7 +97,7 @@ export default function Experience() {
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-primary">My story</p>
           <h2 className="text-4xl font-semibold tracking-[-0.06em] sm:text-5xl">Let&apos;s go back<br className="hidden sm:block" /> in time.</h2>
 
-          <div role="img" aria-label={`Timeline clock: ${active.period}`} className="relative mx-auto mt-8 aspect-square w-full max-w-[25rem]">
+          <div role="img" aria-label={`Timeline clock: ${active.period}`} className="relative mx-auto mt-8 aspect-square w-full max-w-[25rem] overflow-hidden rounded-full">
             <div aria-hidden="true" className="absolute inset-0 rounded-full border border-border/60" />
             <div aria-hidden="true" className="absolute inset-[8%] rounded-full border border-border/60" />
             <div aria-hidden="true" className="absolute inset-[18%] rounded-full border border-border/60" />

@@ -152,3 +152,285 @@
 .animate-shimmer {
   animation: shimmer 3s ease-in-out infinite;
 }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  overflow-x: clip;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+.role-portfolios {
+  background: linear-gradient(180deg, #e7e2dc 0%, #d9d3cc 76%, #d1c9c1 100%);
+}
+
+.role-doorway {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: end;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding: 1.5rem 0 0;
+}
+
+.role-doorway::after {
+  position: absolute;
+  z-index: 0;
+  right: calc((100vw - 100%) / -2);
+  bottom: 0;
+  left: calc((100vw - 100%) / -2);
+  height: 1.25rem;
+  border-top: 3px solid rgba(88, 78, 69, 0.23);
+  background: repeating-linear-gradient(90deg, rgba(126, 110, 95, 0.09) 0 1px, transparent 1px 3.5rem), linear-gradient(#ece7e1, #d9d2ca);
+  content: "";
+}
+
+.role-door-card {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-width: 0;
+  min-height: 25rem;
+  grid-template-columns: minmax(135px, 0.62fr) minmax(0, 1fr);
+  align-items: end;
+  gap: clamp(0.85rem, 2vw, 1.75rem);
+  padding: 1rem 1rem 1.25rem;
+  border-bottom: 1px solid rgba(88, 78, 69, 0.2);
+}
+
+.role-door-button {
+  position: relative;
+  display: flex;
+  width: min(100%, 13rem);
+  height: 23rem;
+  align-self: end;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-inline: auto;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  transition: transform 350ms ease;
+}
+
+.role-door-card.is-active .role-door-button {
+  transform: perspective(900px) rotateY(-5deg) translateY(-0.35rem);
+}
+
+.role-door-frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 0.65rem solid #f3eee8;
+  border-bottom: 0;
+  border-radius: 10rem 10rem 0 0;
+  box-shadow: 0 0.75rem 1.5rem rgba(31, 27, 25, 0.24), inset 0 0 0 1px rgba(255, 255, 255, 0.65);
+}
+
+.role-door-frame::before {
+  position: absolute;
+  z-index: 1;
+  inset: 0.5rem 0.5rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.23);
+  border-bottom: 0;
+  border-radius: 8rem 8rem 0 0;
+  content: "";
+  pointer-events: none;
+}
+
+.role-door-surface {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  background-image: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0 2px, rgba(0, 0, 0, 0.13) 3px 5px, transparent 6px 8px), linear-gradient(90deg, rgba(255, 255, 255, 0.14), transparent 16%, rgba(0, 0, 0, 0.16) 86%, rgba(255, 255, 255, 0.08));
+  box-shadow: inset 0 0 1.25rem rgba(0, 0, 0, 0.4);
+}
+
+.role-door-card--web .role-door-surface {
+  background-color: #263754;
+}
+
+.role-door-card--management .role-door-surface {
+  background-color: #624650;
+}
+
+.role-door-plate {
+  position: absolute;
+  z-index: 2;
+  top: 30%;
+  left: 50%;
+  width: 72%;
+  transform: translateX(-50%);
+  border: 1px solid rgba(80, 56, 23, 0.35);
+  background: linear-gradient(180deg, #f8e3a1, #c49a50 55%, #e7cc83);
+  padding: 0.65rem 0.35rem;
+  color: #42331e;
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  line-height: 1.2;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.28);
+}
+
+.role-door-handle {
+  position: absolute;
+  z-index: 2;
+  top: 62%;
+  right: 0.4rem;
+  width: 2rem;
+  height: 0.45rem;
+  border: 1px solid #8e6a35;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffebae, #b98638 55%, #f8da88);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.role-door-handle::after {
+  position: absolute;
+  top: 50%;
+  right: -0.3rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  transform: translateY(-50%);
+  border: 1px solid #8a642f;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #ffedae, #a87930 70%);
+  content: "";
+}
+
+.role-door-handle span {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.2rem;
+  width: 0.4rem;
+  height: 0.7rem;
+  border: 1px solid #c39b55;
+  border-radius: 0.3rem;
+  background: #332619;
+}
+
+.role-door-enter {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  background: #171615;
+  padding: 0.55rem 0.9rem;
+  color: #fffaf2;
+  font-size: 0.7rem;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.role-door-button:hover .role-door-enter,
+.role-door-button:focus-visible .role-door-enter,
+.role-door-card.is-active .role-door-enter {
+  opacity: 1;
+}
+
+.role-door-button:focus-visible .role-door-frame {
+  outline: 3px solid #945a46;
+  outline-offset: 4px;
+}
+
+.role-door-details {
+  max-height: 0;
+  min-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(0.5rem);
+  visibility: hidden;
+  transition: max-height 350ms ease, opacity 250ms ease, transform 250ms ease, visibility 250ms;
+}
+
+.role-door-details.is-visible {
+  max-height: 32rem;
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.project-showcase__media {
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+}
+
+.project-showcase__media video {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  .role-doorway {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  .role-door-card {
+    min-height: 19rem;
+    grid-template-columns: minmax(6.5rem, 0.45fr) minmax(0, 1fr);
+    gap: 0.9rem;
+    padding: 0.75rem 0.35rem 1rem;
+  }
+
+  .role-door-button {
+    height: 18rem;
+  }
+
+  .role-door-frame {
+    border-width: 0.5rem;
+  }
+
+  .role-door-plate {
+    font-size: 0.42rem;
+    letter-spacing: 0.08em;
+  }
+
+  .role-door-handle {
+    right: 0.15rem;
+    width: 1.5rem;
+  }
+
+  .role-door-enter {
+    font-size: 0.62rem;
+    padding: 0.45rem 0.65rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
