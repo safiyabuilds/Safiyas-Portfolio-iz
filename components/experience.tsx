@@ -134,7 +134,7 @@ export default function Experience() {
                 <p className="mt-5 max-w-2xl leading-relaxed text-muted-foreground">{chapter.description}</p>
                 <p className="mt-4 text-sm font-medium">{chapter.impact}</p>
                 <ul className="mt-4 flex flex-wrap gap-2" aria-label={`${chapter.title} focus areas`}>
-                  {chapter.disciplines.map((discipline) => <li key={discipline} className="rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground">{discipline}</li>)}
+                  {chapter.disciplines.map((discipline) => <li key={discipline} className="experience-discipline-tag rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground">{discipline}</li>)}
                 </ul>
               </motion.article>
             ))}

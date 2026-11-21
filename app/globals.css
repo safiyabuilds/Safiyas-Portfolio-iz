@@ -164,6 +164,19 @@ body {
   transition: background-color 400ms ease;
 }
 
+html.role-view-open main > :not(header):not(#projects) {
+  display: none;
+}
+
+html.role-view-open #projects {
+  min-height: 100vh;
+}
+
+.dark-portfolio #experience .experience-discipline-tag {
+  background-color: #f4eadb;
+  color: #43392f;
+}
+
 .dark-portfolio {
   --background: #000;
   --foreground: #f4f0ea;

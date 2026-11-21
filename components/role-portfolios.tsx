@@ -184,6 +184,11 @@ export default function RolePortfolios() {
   }, [enteringRole])
 
   useEffect(() => {
+    document.documentElement.classList.toggle("role-view-open", enteredRole !== null)
+    return () => document.documentElement.classList.remove("role-view-open")
+  }, [enteredRole])
+
+  useEffect(() => {
     if (!enteredRole) return
     const frame = window.requestAnimationFrame(() => {
       document.getElementById("role-projects")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" })
