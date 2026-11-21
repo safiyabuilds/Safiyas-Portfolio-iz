@@ -77,6 +77,7 @@ const projects: PortfolioProject[] = [
     description: "A marketing website for a digital agency offering web design, software, and growth services, built and deployed with React.",
     tags: ["React", "Web design", "Deployment"],
     logo: Sparkles,
+    live: "https://my-react-app-6bwf.onrender.com",
     style: "bg-[#e8e5ed]",
   },
   {
@@ -86,6 +87,7 @@ const projects: PortfolioProject[] = [
     description: "A backend application built with Node.js and TypeScript on MongoDB, deployed on Render, with endpoints tested in Postman.",
     tags: ["Node.js", "TypeScript", "MongoDB"],
     logo: Code2,
+    live: "https://safiyas-tech4youth-capstone-project.onrender.com",
     style: "bg-[#e3e9e5]",
   },
   {
@@ -95,6 +97,7 @@ const projects: PortfolioProject[] = [
     description: "A multi-section creative studio website with mobile navigation that works across phones, tablets, and desktop screens.",
     tags: ["HTML", "CSS", "JavaScript"],
     logo: Aperture,
+    live: "https://sophia-s-nova-1.onrender.com",
     style: "bg-[#ece8df]",
   },
   {
@@ -104,6 +107,7 @@ const projects: PortfolioProject[] = [
     description: "A form-driven app that turns a student's name, school, and course into a styled digital card using vanilla JavaScript and DOM manipulation.",
     tags: ["HTML", "CSS", "JavaScript"],
     logo: IdCard,
+    live: "https://safiyas-student-card-id-generator.onrender.com",
     style: "bg-[#e3e8ed]",
   },
 ]
