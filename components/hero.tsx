@@ -24,7 +24,7 @@ export default function Hero() {
       <div className="mx-auto flex min-h-[inherit] max-w-6xl flex-col justify-center">
         <div className="mb-10 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground sm:mb-12">
           <span className="size-2 rounded-full bg-[#78916c]" aria-hidden="true" />
-          Independent builder · Kaduna, Nigeria
+          Independent builder · Nigeria
         </div>
         <div className="grid items-center gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:gap-0">
           <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="relative z-10 order-1 pb-5 lg:order-1 lg:pb-0">

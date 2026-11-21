@@ -89,7 +89,7 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="font-semibold mb-1">Location</h3>
-                <p className="text-muted-foreground">Kaduna, Nigeria</p>
+                <p className="text-muted-foreground">Nigeria</p>
               </div>
             </div>
           </motion.div>
