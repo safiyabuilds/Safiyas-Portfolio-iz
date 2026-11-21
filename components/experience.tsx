@@ -13,7 +13,7 @@ const chapters = [
     company: "GraintoX Technologies Limited",
     location: "Katsina, Nigeria",
     description: "Leading a 25-person team building an agritech platform that connects smallholder farmers to markets and financing.",
-    impact: "1,800+ farmers · 178+ transactions",
+    impact: "1,800+ registered farmers · 178+ transactions",
     disciplines: ["Agritech", "Product", "Team leadership"],
   },
   {
