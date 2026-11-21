@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import {
   Aperture,
@@ -14,6 +14,7 @@ import {
   Sparkles,
   Sprout,
   type LucideIcon,
+  X,
 } from "lucide-react"
 
 type PortfolioProject = {
@@ -28,6 +29,7 @@ type PortfolioProject = {
   live?: string
   code?: string
   video?: string
+  videoOrientation?: "portrait" | "landscape"
   style: string
 }
 
@@ -68,6 +70,8 @@ const projects: PortfolioProject[] = [
     logo: Flower2,
     live: "https://morhsophie.github.io/Birth-flower/",
     code: "https://github.com/Morhsophie/Birth-flower",
+    video: "/videos/birth-flower-demo.mp4",
+    videoOrientation: "portrait",
     style: "bg-[#eee5dc]",
   },
   {
@@ -78,6 +82,7 @@ const projects: PortfolioProject[] = [
     tags: ["React", "Web design", "Deployment"],
     logo: Sparkles,
     live: "https://my-react-app-6bwf.onrender.com",
+    video: "/videos/sophias-nexa-demo.mp4",
     style: "bg-[#e8e5ed]",
   },
   {
@@ -88,6 +93,7 @@ const projects: PortfolioProject[] = [
     tags: ["Node.js", "TypeScript", "MongoDB"],
     logo: Code2,
     live: "https://safiyas-tech4youth-capstone-project.onrender.com",
+    video: "/videos/tech4youth-demo.mp4",
     style: "bg-[#e3e9e5]",
   },
   {
@@ -98,6 +104,7 @@ const projects: PortfolioProject[] = [
     tags: ["HTML", "CSS", "JavaScript"],
     logo: Aperture,
     live: "https://sophia-s-nova-1.onrender.com",
+    video: "/videos/nova-studio-demo.mp4",
     style: "bg-[#ece8df]",
   },
   {
@@ -108,12 +115,27 @@ const projects: PortfolioProject[] = [
     tags: ["HTML", "CSS", "JavaScript"],
     logo: IdCard,
     live: "https://safiyas-student-card-id-generator.onrender.com",
+    video: "/videos/student-card-demo.mp4",
     style: "bg-[#e3e8ed]",
   },
 ]
 
 export default function Projects() {
   const [openProjects, setOpenProjects] = useState<Record<string, boolean>>({})
+  const doorButtonRefs = useRef<Record<string, HTMLButtonElement | null>>({})
+  const closeButtonRefs = useRef<Record<string, HTMLButtonElement | null>>({})
+  const activeProjectNumber = useRef<string | null>(null)
+
+  useEffect(() => {
+    const projectNumber = activeProjectNumber.current
+    if (!projectNumber) return
+
+    const target = openProjects[projectNumber]
+      ? closeButtonRefs.current[projectNumber]
+      : doorButtonRefs.current[projectNumber]
+    target?.focus()
+    activeProjectNumber.current = null
+  }, [openProjects])
 
   return (
     <section id="projects" className="border-t border-border px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
@@ -143,15 +165,21 @@ export default function Projects() {
                   </div>
 
                   <motion.button
+                    ref={(element) => { doorButtonRefs.current[project.number] = element }}
                     type="button"
                     aria-expanded={isOpen}
                     aria-controls={detailsId}
-                    aria-label={`${isOpen ? "Close" : "Open"} the ${project.title} project door`}
-                    onClick={() => setOpenProjects((current) => ({ ...current, [project.number]: !current[project.number] }))}
-                    animate={{ rotateY: isOpen ? -62 : 0 }}
+                    aria-hidden={isOpen}
+                    inert={isOpen}
+                    aria-label={`Open the ${project.title} project door`}
+                    onClick={() => {
+                      activeProjectNumber.current = project.number
+                      setOpenProjects((current) => ({ ...current, [project.number]: !current[project.number] }))
+                    }}
+                    animate={{ rotateY: isOpen ? -112 : 0 }}
                     whileHover={{ scale: isOpen ? 1 : 1.01 }}
                     transition={{ type: "spring", stiffness: 95, damping: 16 }}
-                    style={{ transformOrigin: "left center", transformStyle: "preserve-3d" }}
+                    style={{ transformOrigin: "left center", transformStyle: "preserve-3d", backfaceVisibility: "hidden" }}
                     className={`${project.style} absolute inset-0 flex flex-col justify-between border-y border-r border-border px-6 py-6 text-left shadow-[inset_10px_0_0_rgba(0,0,0,0.04)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary`}
                   >
                     <span aria-hidden="true" className="absolute inset-3 border border-foreground/15" />
@@ -173,10 +201,19 @@ export default function Projects() {
 
                 <motion.div id={detailsId} aria-hidden={!isOpen} inert={!isOpen} initial={false} animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }} transition={{ duration: 0.3, ease: "easeInOut" }} className="overflow-hidden">
                   <div className="border-t border-border p-5 sm:p-6">
+                    <div className="mb-5 flex items-center justify-between gap-4">
+                      <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">Inside {project.title}</p>
+                      <button ref={(element) => { closeButtonRefs.current[project.number] = element }} type="button" aria-label={`Close ${project.title} project details`} onClick={() => {
+                        activeProjectNumber.current = project.number
+                        setOpenProjects((current) => ({ ...current, [project.number]: false }))
+                      }} className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground transition hover:border-primary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                        Back to doors <X size={14} aria-hidden="true" />
+                      </button>
+                    </div>
                     {project.video && isOpen && (
                       <div className="mb-5">
                         <p id={`project-video-title-${project.number}`} className="mb-2 text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">{project.title} demo</p>
-                        <video aria-labelledby={`project-video-title-${project.number}`} autoPlay muted playsInline controls preload="auto" className="aspect-video w-full rounded-xl border border-border bg-muted object-cover">
+                        <video aria-labelledby={`project-video-title-${project.number}`} autoPlay muted playsInline controls preload="auto" className={`${project.videoOrientation === "portrait" ? "mx-auto aspect-[9/16] max-w-xs" : "aspect-video"} w-full rounded-xl border border-border bg-muted object-cover`}>
                           <source src={project.video} type="video/mp4" />
                           Your browser does not support embedded video.
                         </video>
