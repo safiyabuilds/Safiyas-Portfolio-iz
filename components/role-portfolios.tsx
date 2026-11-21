@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { motion, useInView, useReducedMotion } from "framer-motion"
-import { ArrowDown, ArrowUpRight, Check, Github } from "lucide-react"
+import { ArrowDown, ArrowLeft, ArrowUpRight, Check, Github } from "lucide-react"
 
 type RoleId = "web" | "management"
 
@@ -264,20 +264,16 @@ export default function RolePortfolios() {
               className="role-interior scroll-mt-20"
             >
               <div className="role-interior__wall">
-                <div className="mb-10 flex flex-col gap-5 border-b border-border/70 pb-7 sm:flex-row sm:items-end sm:justify-between">
-                  <div>
-                    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary">Inside the {role.label} door</p>
-                    <h3 id="role-projects-heading" className="text-3xl font-semibold tracking-[-0.06em] sm:text-5xl">A closer look at my work</h3>
-                  </div>
-                  <button type="button" onClick={() => { setEnteredRole(null); setPreviewRole(null); document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }) }} className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-sm font-medium transition hover:border-primary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-                    Back to the doors<ArrowUpRight size={15} aria-hidden="true" />
-                  </button>
+                <div className="mb-12 max-w-5xl border-b border-border/70 pb-8 sm:mb-16 sm:pb-10">
+                  <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">Selected work · {role.plate}</p>
+                  <h3 id="role-projects-heading" className="text-5xl font-semibold tracking-[-0.065em] sm:text-7xl lg:text-[7rem] lg:leading-[0.95]">{role.label}</h3>
+                  <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">{role.summary}</p>
                 </div>
                 <div className="flex flex-col gap-8 sm:gap-12">
                   {roleProjects.map((project, index) => <ProjectShowcase key={`${enteredRole}-${project.number}`} project={project} index={index} />)}
                 </div>
-                <button type="button" onClick={() => { setEnteredRole(null); setPreviewRole(null); document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }) }} className="mt-10 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-                  <ArrowDown size={15} aria-hidden="true" /> Return to the hallway
+                <button type="button" onClick={() => { setEnteredRole(null); setPreviewRole(null); document.getElementById("projects")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }) }} className="role-interior__back fixed bottom-5 left-5 z-40 inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-card-foreground shadow-lg transition hover:border-primary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:bottom-7 sm:left-7">
+                  <ArrowLeft size={16} aria-hidden="true" /> Back to the doors
                 </button>
               </div>
             </motion.section>
