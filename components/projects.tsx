@@ -66,7 +66,8 @@ const projects: PortfolioProject[] = [
     description: "A personalized birthday greeting generator that draws 720 animation frames with Pillow and encodes them into an MP4 with ImageIO and FFmpeg.",
     tags: ["Python", "Pillow", "FFmpeg"],
     logo: Flower2,
-    code: "https://github.com/Morhsophie",
+    live: "https://morhsophie.github.io/Birth-flower/",
+    code: "https://github.com/Morhsophie/Birth-flower",
     style: "bg-[#eee5dc]",
   },
   {
