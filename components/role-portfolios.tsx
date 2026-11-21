@@ -172,6 +172,7 @@ export default function RolePortfolios() {
   const [previewRole, setPreviewRole] = useState<RoleId | null>(null)
   const [enteredRole, setEnteredRole] = useState<RoleId | null>(null)
   const [enteringRole, setEnteringRole] = useState<RoleId | null>(null)
+  const returnToDoors = useRef(false)
   const visibleRole = previewRole ?? enteredRole
 
   useEffect(() => {
@@ -189,7 +190,15 @@ export default function RolePortfolios() {
   }, [enteredRole])
 
   useEffect(() => {
-    if (!enteredRole) return
+    if (!enteredRole) {
+      if (!returnToDoors.current) return
+      returnToDoors.current = false
+      const frame = window.requestAnimationFrame(() => {
+        document.getElementById("projects")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" })
+      })
+      return () => window.cancelAnimationFrame(frame)
+    }
+
     const frame = window.requestAnimationFrame(() => {
       document.getElementById("role-projects")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" })
     })
@@ -277,7 +286,7 @@ export default function RolePortfolios() {
                 <div className="flex flex-col gap-8 sm:gap-12">
                   {roleProjects.map((project, index) => <ProjectShowcase key={`${enteredRole}-${project.number}`} project={project} index={index} />)}
                 </div>
-                <button type="button" onClick={() => { setEnteredRole(null); setPreviewRole(null); document.getElementById("projects")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }) }} className="role-interior__back fixed bottom-5 left-5 z-40 inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-card-foreground shadow-lg transition hover:border-primary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:bottom-7 sm:left-7">
+                <button type="button" onClick={() => { returnToDoors.current = true; setEnteredRole(null); setPreviewRole(null) }} className="role-interior__back fixed bottom-5 left-5 z-40 inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-card-foreground shadow-lg transition hover:border-primary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:bottom-7 sm:left-7">
                   <ArrowLeft size={16} aria-hidden="true" /> Back to the doors
                 </button>
               </div>

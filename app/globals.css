@@ -220,9 +220,25 @@ html.role-view-open #projects {
   --border: #d7cfc4;
 }
 
+.dark-portfolio .hero-portrait-frame {
+  background: #000;
+}
+
 .dark-portfolio .hero-portrait {
   filter: grayscale(1) brightness(0.55);
   transition: filter 500ms ease;
+}
+
+.dark-portfolio .skills-card {
+  border-color: #78716c;
+  background: #a8a29e;
+  color: #1c1917;
+}
+
+.dark-portfolio .skills-tag {
+  border-color: #78716c;
+  background: #d6d3d1;
+  color: #1c1917;
 }
 
 .dark-portfolio .hero-copy h1 {

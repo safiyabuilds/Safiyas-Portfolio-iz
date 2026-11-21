@@ -48,8 +48,8 @@ export default function Hero() {
             </div>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.15 }} className="relative order-2 mx-auto flex w-full max-w-[450px] items-end justify-center lg:order-2 lg:mx-0 lg:max-w-none lg:justify-end">
-            <div className="w-[83%] bg-black lg:w-[70%]">
-              <Image src={portraitUrl} alt="Safiya Muhammad, software engineer and product manager" fetchPriority="high" width={809} height={1080} className="hero-portrait relative z-10 block h-auto w-full grayscale" />
+            <div className="hero-portrait-frame w-[83%] bg-[#b56c4c] p-2 pb-0 lg:w-[70%]">
+              <Image src={portraitUrl} alt="Safiya Muhammad, software engineer and product manager" fetchPriority="high" width={809} height={1080} className="hero-portrait relative z-10 block h-auto w-full" />
             </div>
           </motion.div>
         </div>
