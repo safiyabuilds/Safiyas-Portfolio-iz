@@ -11,7 +11,6 @@ const chapters = [
     period: "Dec 2024 to Present",
     title: "Project Manager",
     company: "GraintoX Technologies Limited",
-    location: "Katsina, Nigeria",
     description: "Leading a 25-person team building an agritech platform that connects smallholder farmers to markets and financing.",
     impact: "1,800+ registered farmers · 178+ transactions",
     disciplines: ["Agritech", "Product", "Team leadership"],
@@ -22,7 +21,6 @@ const chapters = [
     period: "2025",
     title: "Team Lead, MediKey",
     company: "Hack4Freedom",
-    location: "Kaduna, Nigeria",
     description: "Took a four-person team from problem definition to a working MVP for patient-owned health records, using cryptographic identity and encrypted Nostr events.",
     impact: "Patient-owned health records MVP",
     disciplines: ["Bitcoin", "Nostr", "Health tech"],
@@ -33,7 +31,6 @@ const chapters = [
     period: "Apr 2023 to Apr 2024",
     title: "Event Coordinator",
     company: "Teen Girls in Blockchain",
-    location: "Zaria, Nigeria",
     description: "Led technology outreach for around 100 secondary school girls and awarded internships across software development, cybersecurity, and project management.",
     impact: "Around 100 students reached",
     disciplines: ["Education", "Blockchain", "Community"],
@@ -44,7 +41,6 @@ const chapters = [
     period: "2023 to 2024",
     title: "Web Development Intern",
     company: "Toggle Africa",
-    location: "Nigeria",
     description: "Built web projects and contributed to client deliverables while growing my skills in responsive design, API integration, and Git-based collaboration.",
     impact: "Responsive web · API integration",
     disciplines: ["HTML", "CSS", "JavaScript", "Git"],
@@ -130,7 +126,7 @@ export default function Experience() {
                 <span aria-hidden="true" className={`absolute -left-[2.15rem] top-1.5 size-3 rounded-full border-2 border-background sm:-left-[2.4rem] ${activeChapter === index ? "bg-primary shadow-[0_0_0_5px_rgba(116,146,103,0.18)]" : "bg-muted-foreground/50"}`} />
                 <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">{chapter.period}</p>
                 <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">{chapter.title}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{chapter.company} · {chapter.location}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{chapter.company}</p>
                 <p className="mt-5 max-w-2xl leading-relaxed text-muted-foreground">{chapter.description}</p>
                 <p className="mt-4 text-sm font-medium">{chapter.impact}</p>
                 <ul className="mt-4 flex flex-wrap gap-2" aria-label={`${chapter.title} focus areas`}>

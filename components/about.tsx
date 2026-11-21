@@ -1,8 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { MapPin } from "lucide-react"
-
 export default function About() {
   return (
     <section id="about" className="border-t border-border bg-card/50 py-20">
@@ -21,7 +19,6 @@ export default function About() {
           <div className="rounded-xl border border-border bg-background p-8">
             <h3 className="mb-5 text-xl font-semibold">At a glance</h3>
             <div className="flex flex-col gap-4 text-muted-foreground">
-              <p className="flex items-center gap-3"><MapPin className="text-primary" size={18} />Nigeria</p>
               <p><span className="font-semibold text-primary">Focus:</span> Web development & product leadership</p>
               <p><span className="font-semibold text-primary">Impact:</span> Agritech platform with 1,800+ registered farmers</p>
               <p><span className="font-semibold text-primary">Languages:</span> Hausa (native), English (fluent), Arabic (basic)</p>

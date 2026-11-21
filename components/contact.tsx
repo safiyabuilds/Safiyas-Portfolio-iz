@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Send } from "lucide-react"
+import { Mail, Phone, Send } from "lucide-react"
 import { useState } from "react"
 
 export default function Contact() {
@@ -53,9 +53,9 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4">Let's Connect</h2>
+          <h2 className="text-4xl font-bold mb-4">Let&apos;s Connect</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Have a project in mind or just want to chat? I'd love to hear from you!
+            Have a project in mind or just want to chat? I&apos;d love to hear from you!
           </p>
         </motion.div>
 
@@ -94,15 +94,6 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="flex gap-4">
-              <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
-                <MapPin size={24} className="text-primary" />
-              </div>
-              <div>
-                <h3 className="font-semibold mb-1">Location</h3>
-                <p className="text-muted-foreground">Nigeria</p>
-              </div>
-            </div>
           </motion.div>
 
           <motion.form
