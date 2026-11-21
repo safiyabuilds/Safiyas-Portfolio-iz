@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
+import ProjectVideoDemo from "./project-video-demo"
 import {
   Aperture,
   ArrowUpRight,
@@ -211,13 +212,11 @@ export default function Projects() {
                       </button>
                     </div>
                     {project.video && isOpen && (
-                      <div className="mb-5">
-                        <p id={`project-video-title-${project.number}`} className="mb-2 text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">{project.title} demo</p>
-                        <video aria-labelledby={`project-video-title-${project.number}`} autoPlay muted playsInline controls preload="auto" className={`${project.videoOrientation === "portrait" ? "mx-auto aspect-[9/16] max-w-xs" : "aspect-video"} w-full rounded-xl border border-border bg-muted object-cover`}>
-                          <source src={project.video} type="video/mp4" />
-                          Your browser does not support embedded video.
-                        </video>
-                      </div>
+                      <ProjectVideoDemo
+                        title={project.title}
+                        src={project.video}
+                        orientation={project.videoOrientation}
+                      />
                     )}
                     <p className="leading-relaxed text-muted-foreground">{project.description}</p>
                     <ul className="mt-5 flex flex-wrap gap-2" aria-label={`${project.title} technologies and focus`}>
