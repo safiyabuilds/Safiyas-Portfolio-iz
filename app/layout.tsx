@@ -7,14 +7,14 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Safiya Muhammad | Software Engineer & Product Manager",
+  title: "Safiya Muhammad | Web Developer & Project Manager",
   description:
-    "Portfolio of Safiya Muhammad, a software engineer and product manager building responsive web products and leading teams across agritech, health tech, and creative coding.",
-  keywords: "Safiya Muhammad, software engineer, web developer, product manager, React, Next.js, Node.js, Nigeria",
+    "Portfolio of Safiya Muhammad, a web developer and project manager building responsive digital products and leading teams across agritech and health tech.",
+  keywords: "Safiya Muhammad, web developer, project manager, React, Next.js, Node.js, Nigeria",
   authors: [{ name: "Safiya Muhammad" }],
   openGraph: {
-    title: "Safiya Muhammad | Software Engineer & Product Manager",
-    description: "Portfolio showcasing software engineering, product management, and community impact.",
+    title: "Safiya Muhammad | Web Developer & Project Manager",
+    description: "Portfolio showcasing web development, project delivery, and community impact.",
     type: "website",
     url: "https://safiya-portfolio.vercel.app",
     images: [

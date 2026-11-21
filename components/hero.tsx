@@ -3,9 +3,7 @@
 import { useEffect, useState } from "react"
 import { ArrowDown, ArrowUpRight } from "lucide-react"
 import { AnimatePresence, motion } from "framer-motion"
-import SocialLinks from "./social-links"
-
-const roles = ["Software Development", "Product Manager", "Botanist"]
+const roles = ["Web Developer", "Project Manager"]
 const portraitUrl = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-11-20%20at%2011.07.26%20PM-PT0pFHJUHfTXzifzynW7kmBCCQvR5x.jpeg"
 
 export default function Hero() {
@@ -24,7 +22,7 @@ export default function Hero() {
       <div className="mx-auto flex min-h-[inherit] max-w-6xl flex-col justify-center">
         <div className="mb-10 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground sm:mb-12 lg:mb-6">
           <span className="size-2 rounded-full bg-[#78916c]" aria-hidden="true" />
-          Open to software engineering and product roles · Nigeria
+          Open to web development and project management roles · Nigeria
         </div>
         <div className="grid items-center gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:gap-0">
           <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="relative z-10 order-1 pb-5 lg:order-1 lg:pb-0">
@@ -47,7 +45,6 @@ export default function Hero() {
               <a href="/safiya-muhammad-cv.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition hover:bg-primary">View my CV <span className="flex size-7 items-center justify-center rounded-full bg-background/15"><ArrowUpRight size={15} aria-hidden="true" /></span></a>
               <a href="#projects" className="inline-flex items-center gap-2 text-sm font-medium text-foreground underline decoration-border underline-offset-4 transition hover:decoration-foreground">See my work <ArrowDown size={15} /></a>
             </div>
-            <div className="mt-7 flex items-center gap-4 text-sm text-muted-foreground lg:mt-5"><span>Find me</span><SocialLinks /><span className="hidden sm:inline">Web · Product · Impact</span></div>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.15 }} className="relative order-2 mx-auto flex w-full max-w-[450px] items-end justify-center lg:order-2 lg:mx-0 lg:max-w-none lg:justify-end">
             <div aria-hidden="true" className="absolute right-[9%] top-[6%] aspect-square w-[76%] rounded-full bg-[#e9dfd0]" />

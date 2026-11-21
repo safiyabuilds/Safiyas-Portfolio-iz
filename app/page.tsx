@@ -3,7 +3,7 @@ import Hero from "@/components/hero"
 import About from "@/components/about"
 import Skills from "@/components/skills"
 import Experience from "@/components/experience"
-import Projects from "@/components/projects"
+import RolePortfolios from "@/components/role-portfolios"
 import Achievements from "@/components/achievements"
 import CV from "@/components/cv"
 import Contact from "@/components/contact"
@@ -17,7 +17,7 @@ export default function Home() {
       <About />
       <Skills />
       <Experience />
-      <Projects />
+      <RolePortfolios />
       <Achievements />
       <CV />
       <Contact />
