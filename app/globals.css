@@ -159,7 +159,28 @@ html {
 }
 
 body {
+  min-height: 100vh;
   overflow-x: clip;
+  transition: background-color 400ms ease;
+}
+
+.dark-portfolio body {
+  background-color: #080808;
+}
+
+.dark-portfolio .hero-portrait {
+  filter: grayscale(1) brightness(0.55);
+  transition: filter 500ms ease;
+}
+
+.project-showcase {
+  scroll-margin-top: 6rem;
+}
+
+@media (max-width: 767px) {
+  .project-showcase {
+    top: 5.5rem;
+  }
 }
 
 img,

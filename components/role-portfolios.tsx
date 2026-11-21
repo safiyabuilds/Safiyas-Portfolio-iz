@@ -33,7 +33,7 @@ const roles: {
     eyebrow: "End to end, from sketch to live site",
     summary: "Thoughtful, responsive digital experiences—from the first interface sketch through implementation and launch.",
     focus: ["Discovery & planning", "UX and visual design", "Front-end and back-end development", "Technical SEO and performance", "Testing, launch and support"],
-    projectNumbers: ["01", "02", "03", "04", "05", "06"],
+    projectNumbers: ["01", "02", "03", "04", "05"],
   },
   {
     id: "management",
@@ -42,7 +42,7 @@ const roles: {
     eyebrow: "Clear direction, thoughtful delivery",
     summary: "Bringing people, priorities and delivery together to turn complex product ideas into useful outcomes.",
     focus: ["Product goals & roadmaps", "Cross-functional team leadership", "Sprint planning & delivery tracking", "Stakeholder coordination", "Launch, adoption & impact"],
-    projectNumbers: ["07", "08"],
+    projectNumbers: ["07"],
   },
 ]
 
@@ -55,7 +55,7 @@ const projects: Project[] = [
     tags: ["Node.js", "TypeScript", "MongoDB", "Postman"],
     video: "/videos/tech4youth-demo.mp4",
     live: "https://safiyas-tech4youth-capstone-project.onrender.com",
-    code: "https://github.com/Morhsophie/Safiyas-Tech4Youth-Capstone-Project",
+    code: "https://github.com/safiyabuilds/Safiyas-Tech4Youth-Capstone-Project",
   },
   {
     number: "02",
@@ -65,7 +65,7 @@ const projects: Project[] = [
     tags: ["React", "Web design", "Responsive UI"],
     video: "/videos/sophias-nexa-demo.mp4",
     live: "https://my-react-app-6bwf.onrender.com",
-    code: "https://github.com/Morhsophie/My-react-app",
+    code: "https://github.com/safiyabuilds/My-react-app",
   },
   {
     number: "03",
@@ -75,7 +75,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "JavaScript"],
     video: "/videos/nova-studio-demo.mp4",
     live: "https://sophia-s-nova-1.onrender.com",
-    code: "https://github.com/Morhsophie/Sophia-s-Nova",
+    code: "https://github.com/safiyabuilds/Sophia-s-Nova",
   },
   {
     number: "04",
@@ -85,7 +85,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "JavaScript"],
     video: "/videos/student-card-demo.mp4",
     live: "https://safiyas-student-card-id-generator.onrender.com",
-    code: "https://github.com/Morhsophie/Safiyas-Student-Card-ID-Generator-",
+    code: "https://github.com/safiyabuilds/Safiyas-Student-Card-ID-Generator-",
   },
   {
     number: "05",
@@ -95,17 +95,7 @@ const projects: Project[] = [
     tags: ["Python", "Pillow", "ImageIO", "FFmpeg"],
     video: "/videos/birth-flower-demo.mp4",
     live: "https://morhsophie.github.io/Birth-flower/",
-    code: "https://github.com/Morhsophie/Birth-flower",
-  },
-  {
-    number: "06",
-    title: "MediKey",
-    category: "Health tech · Product build",
-    description: "A patient-owned health record MVP using cryptographic identities and signed, encrypted Nostr events distributed across relays.",
-    tags: ["Product delivery", "Health tech", "Nostr"],
-    video: "/videos/medikey-demo.mp4",
-    live: "https://medikey-azure.vercel.app/",
-    code: "https://github.com/medikey/medikey",
+    code: "https://github.com/safiyabuilds/Birth-flower",
   },
   {
     number: "07",
@@ -115,16 +105,6 @@ const projects: Project[] = [
     tags: ["Project management", "Agritech", "25-person team", "1,800+ farmers"],
     video: "/videos/graintox-demo.mp4",
     live: "https://graintox.com",
-  },
-  {
-    number: "08",
-    title: "MediKey",
-    category: "Health tech · Cross-functional delivery",
-    description: "Coordinated the team building a patient-owned health-record MVP, aligning product direction with a working technical prototype.",
-    tags: ["Team leadership", "Product direction", "Health tech"],
-    video: "/videos/medikey-demo.mp4",
-    live: "https://medikey-azure.vercel.app/",
-    code: "https://github.com/medikey/medikey",
   },
 ]
 
@@ -151,7 +131,7 @@ function ProjectShowcase({ project, index }: { project: Project; index: number }
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`project-showcase grid grid-cols-1 overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-[0_24px_70px_rgba(30,24,20,0.08)] md:grid-cols-[1.15fr_0.85fr] ${index % 2 === 1 ? "md:[&>div:first-child]:order-2" : ""}`}
+      className={`project-showcase sticky grid grid-cols-1 overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-[0_24px_70px_rgba(30,24,20,0.08)] md:grid-cols-[1.15fr_0.85fr] ${index % 2 === 1 ? "md:[&>div:first-child]:order-2" : ""}`} style={{ top: `calc(5.5rem + ${index * 0.75}rem)` }}
     >
       <div className="project-showcase__media relative min-h-64 overflow-hidden bg-[#171918]">
         <video

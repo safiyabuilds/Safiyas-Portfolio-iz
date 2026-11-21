@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { AnimatePresence, motion } from "framer-motion"
+import { motion } from "framer-motion"
 import {
   Aperture,
   ArrowUpRight,
@@ -10,7 +10,6 @@ import {
   Flower2,
   Github,
   IdCard,
-  ShieldCheck,
   Sparkles,
   Sprout,
   type LucideIcon,
@@ -41,7 +40,7 @@ const projects: PortfolioProject[] = [
     tags: ["Node.js", "TypeScript", "MongoDB"],
     logo: Code2,
     live: "https://safiyas-tech4youth-capstone-project.onrender.com",
-    code: "https://github.com/Morhsophie/Safiyas-Tech4Youth-Capstone-Project",
+    code: "https://github.com/safiyabuilds/Safiyas-Tech4Youth-Capstone-Project",
     video: "/videos/tech4youth-demo.mp4",
     style: "bg-[#e3e9e5]",
   },
@@ -53,7 +52,7 @@ const projects: PortfolioProject[] = [
     tags: ["React", "Web design", "Deployment"],
     logo: Sparkles,
     live: "https://my-react-app-6bwf.onrender.com",
-    code: "https://github.com/Morhsophie/My-react-app",
+    code: "https://github.com/safiyabuilds/My-react-app",
     video: "/videos/sophias-nexa-demo.mp4",
     style: "bg-[#e8e5ed]",
   },
@@ -65,7 +64,7 @@ const projects: PortfolioProject[] = [
     tags: ["HTML", "CSS", "JavaScript"],
     logo: Aperture,
     live: "https://sophia-s-nova-1.onrender.com",
-    code: "https://github.com/Morhsophie/Sophia-s-Nova",
+    code: "https://github.com/safiyabuilds/Sophia-s-Nova",
     video: "/videos/nova-studio-demo.mp4",
     style: "bg-[#ece8df]",
   },
@@ -77,7 +76,7 @@ const projects: PortfolioProject[] = [
     tags: ["HTML", "CSS", "JavaScript"],
     logo: IdCard,
     live: "https://safiyas-student-card-id-generator.onrender.com",
-    code: "https://github.com/Morhsophie/Safiyas-Student-Card-ID-Generator-",
+    code: "https://github.com/safiyabuilds/Safiyas-Student-Card-ID-Generator-",
     video: "/videos/student-card-demo.mp4",
     style: "bg-[#e3e8ed]",
   },
@@ -89,23 +88,9 @@ const projects: PortfolioProject[] = [
     tags: ["Python", "Pillow", "FFmpeg"],
     logo: Flower2,
     live: "https://morhsophie.github.io/Birth-flower/",
-    code: "https://github.com/Morhsophie/Birth-flower",
+    code: "https://github.com/safiyabuilds/Birth-flower",
     video: "/videos/birth-flower-demo.mp4",
     style: "bg-[#eee5dc]",
-  },
-  {
-    number: "06",
-    category: "Health tech · Team lead",
-    title: "MediKey",
-    description: "A patient-owned health record MVP where identity is a cryptographic key pair and records are signed, encrypted Nostr events distributed across relays.",
-    tags: ["Bitcoin", "Nostr", "Health records"],
-    logo: ShieldCheck,
-    logoImage: "https://medikey-azure.vercel.app/medikey-logo.png",
-    brandColor: "#d2691e",
-    live: "https://medikey-azure.vercel.app/",
-    code: "https://github.com/medikey/medikey",
-    video: "/videos/medikey-demo.mp4",
-    style: "bg-[#fbf2e9]",
   },
   {
     number: "07",

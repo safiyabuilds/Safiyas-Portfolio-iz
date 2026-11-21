@@ -11,7 +11,7 @@ const socialProfiles: SocialProfile[] = [
   { name: "X", icon: "twitter", href: "https://twitter.com/muhammadsafiyy2", label: "@muhammadsafiyy2" },
   { name: "TikTok", icon: "tiktok", href: "https://www.tiktok.com/@safiyabuilds", label: "@safiyabuilds" },
   { name: "LinkedIn", icon: "linkedin", href: "https://linkedin.com/in/safiya-muhammad-9a1890236", label: "Safiya Muhammad" },
-  { name: "GitHub", icon: "github", href: "https://github.com/Morhsophie", label: "Morhsophie" },
+  { name: "GitHub", icon: "github", href: "https://github.com/safiyabuilds", label: "safiyabuilds" },
 ]
 
 export default function SocialLinks() {
