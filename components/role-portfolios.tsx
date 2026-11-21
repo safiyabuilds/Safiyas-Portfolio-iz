@@ -171,7 +171,17 @@ function ProjectShowcase({ project, index }: { project: Project; index: number }
 export default function RolePortfolios() {
   const [previewRole, setPreviewRole] = useState<RoleId | null>(null)
   const [enteredRole, setEnteredRole] = useState<RoleId | null>(null)
+  const [enteringRole, setEnteringRole] = useState<RoleId | null>(null)
   const visibleRole = previewRole ?? enteredRole
+
+  useEffect(() => {
+    if (!enteringRole) return
+    const timeout = window.setTimeout(() => {
+      setEnteredRole(enteringRole)
+      setEnteringRole(null)
+    }, window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 700)
+    return () => window.clearTimeout(timeout)
+  }, [enteringRole])
 
   useEffect(() => {
     if (!enteredRole) return
@@ -182,13 +192,15 @@ export default function RolePortfolios() {
   }, [enteredRole])
 
   const enterRole = (role: RoleId) => {
+    if (enteringRole || enteredRole) return
     setPreviewRole(role)
-    setEnteredRole(role)
+    setEnteringRole(role)
   }
 
   return (
     <section id="projects" aria-labelledby="doors-heading" className="role-portfolios scroll-mt-20 px-4 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-28">
       <div className="mx-auto max-w-7xl">
+        {!enteredRole && <>
         <div className="mx-auto mb-12 max-w-4xl text-center sm:mb-16">
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">Web · Product · Impact</p>
           <h2 id="doors-heading" className="text-4xl font-semibold tracking-[-0.065em] sm:text-6xl lg:text-7xl">Magic happens behind the doors</h2>
@@ -200,7 +212,7 @@ export default function RolePortfolios() {
             const isActive = visibleRole === role.id
             const detailsId = `role-details-${role.id}`
             return (
-              <article key={role.id} className={`role-door-card role-door-card--${role.id} ${isActive ? "is-active" : ""}`}>
+              <article key={role.id} className={`role-door-card role-door-card--${role.id} ${isActive ? "is-active" : ""} ${enteringRole === role.id ? "is-entering" : ""}`}>
                 <button
                   id={`role-${role.id}`}
                   type="button"
@@ -236,26 +248,39 @@ export default function RolePortfolios() {
           })}
         </div>
 
-        {!enteredRole && <p className="mt-8 text-center text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">Hover to preview · Select a door to enter</p>}
+        <p className="mt-8 text-center text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">Hover to preview · Select a door to enter</p>
+        </>}
 
         {enteredRole && (() => {
           const role = roles.find((item) => item.id === enteredRole)!
           const roleProjects = projects.filter((project) => role.projectNumbers.includes(project.number))
           return (
-            <section id="role-projects" aria-labelledby="role-projects-heading" className="scroll-mt-24 pt-20 sm:pt-28">
-              <div className="mb-10 flex flex-col gap-5 border-b border-border pb-7 sm:flex-row sm:items-end sm:justify-between">
-                <div>
-                  <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary">Inside the {role.label} door</p>
-                  <h3 id="role-projects-heading" className="text-3xl font-semibold tracking-[-0.06em] sm:text-5xl">Selected projects</h3>
+            <motion.section
+              id="role-projects"
+              aria-labelledby="role-projects-heading"
+              initial={{ opacity: 0, scale: 0.97, y: 28 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+              className="role-interior scroll-mt-20"
+            >
+              <div className="role-interior__wall">
+                <div className="mb-10 flex flex-col gap-5 border-b border-border/70 pb-7 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary">Inside the {role.label} door</p>
+                    <h3 id="role-projects-heading" className="text-3xl font-semibold tracking-[-0.06em] sm:text-5xl">A closer look at my work</h3>
+                  </div>
+                  <button type="button" onClick={() => { setEnteredRole(null); setPreviewRole(null); document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }) }} className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-sm font-medium transition hover:border-primary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                    Back to the doors<ArrowUpRight size={15} aria-hidden="true" />
+                  </button>
                 </div>
-                <button type="button" onClick={() => { setEnteredRole(null); setPreviewRole(null); document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }) }} className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-sm font-medium transition hover:border-primary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-                  Back to the doors<ArrowUpRight size={15} aria-hidden="true" />
+                <div className="flex flex-col gap-8 sm:gap-12">
+                  {roleProjects.map((project, index) => <ProjectShowcase key={`${enteredRole}-${project.number}`} project={project} index={index} />)}
+                </div>
+                <button type="button" onClick={() => { setEnteredRole(null); setPreviewRole(null); document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }) }} className="mt-10 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                  <ArrowDown size={15} aria-hidden="true" /> Return to the hallway
                 </button>
               </div>
-              <div className="flex flex-col gap-8 sm:gap-12">
-                {roleProjects.map((project, index) => <ProjectShowcase key={`${enteredRole}-${project.number}`} project={project} index={index} />)}
-              </div>
-            </section>
+            </motion.section>
           )
         })()}
       </div>

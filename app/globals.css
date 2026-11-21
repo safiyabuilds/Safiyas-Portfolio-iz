@@ -177,7 +177,42 @@ body {
   scroll-margin-top: 6rem;
 }
 
+.role-interior {
+  min-height: 80vh;
+  border: 1px solid rgba(88, 78, 69, 0.2);
+  border-radius: 1.75rem;
+  background: linear-gradient(180deg, rgba(249, 246, 241, 0.78), rgba(221, 214, 205, 0.94));
+  padding: clamp(1rem, 4vw, 3rem);
+  box-shadow: 0 28px 80px rgba(34, 28, 24, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.82);
+}
+
+.role-interior__wall {
+  position: relative;
+  min-height: 70vh;
+}
+
+.role-interior__wall::before {
+  position: absolute;
+  z-index: 0;
+  top: -1.25rem;
+  right: 0;
+  left: 0;
+  height: 0.75rem;
+  border: 1px solid rgba(88, 78, 69, 0.2);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #faf8f5, #d6cec4);
+  box-shadow: 0 8px 18px rgba(35, 29, 24, 0.11);
+  content: "";
+  pointer-events: none;
+}
+
 @media (max-width: 767px) {
+  .role-interior {
+    min-height: 100vh;
+    border-radius: 1.25rem;
+    padding: 1rem;
+  }
+
   .project-showcase {
     top: 5.5rem;
   }
@@ -243,8 +278,17 @@ video {
   transition: transform 350ms ease;
 }
 
+.role-door-button {
+  transform-origin: left center;
+  transform-style: preserve-3d;
+}
+
 .role-door-card.is-active .role-door-button {
   transform: perspective(900px) rotateY(-5deg) translateY(-0.35rem);
+}
+
+.role-door-card.is-entering .role-door-button {
+  transform: perspective(900px) rotateY(-72deg) translateY(-0.35rem);
 }
 
 .role-door-frame {
