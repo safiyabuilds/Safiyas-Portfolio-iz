@@ -31,7 +31,7 @@ const roles: {
     label: "Web Development",
     plate: "WEB DEVELOPER",
     eyebrow: "End to end, from sketch to live site",
-    summary: "Thoughtful, responsive digital experiences—from the first interface sketch through implementation and launch.",
+    summary: "Thoughtful, responsive digital experiences, from the first interface sketch through implementation and launch.",
     focus: ["Discovery & planning", "UX and visual design", "Front-end and back-end development", "Technical SEO and performance", "Testing, launch and support"],
     projectNumbers: ["01", "02", "03", "04", "05"],
   },
