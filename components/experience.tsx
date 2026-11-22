@@ -89,11 +89,16 @@ export default function Experience() {
   return (
     <section id="experience" className="border-t border-border px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-        <div className="lg:sticky lg:top-24 lg:h-fit">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-primary">My story</p>
-          <h2 className="text-4xl font-semibold tracking-[-0.06em] sm:text-5xl">Let&apos;s go back<br className="hidden sm:block" /> in time.</h2>
+        <div className="sticky top-[4.75rem] z-30 -mx-5 border-b border-border bg-background/95 px-5 py-4 backdrop-blur-xl lg:static lg:mx-0 lg:border-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-primary lg:mb-4">My story</p>
+          <h2 className="text-3xl font-semibold tracking-[-0.06em] sm:text-4xl lg:text-5xl">Let&apos;s go back in time.</h2>
 
-          <div role="img" aria-label={`Timeline clock: ${active.period}`} className="relative mx-auto mt-8 aspect-square w-full max-w-[25rem] overflow-hidden rounded-full">
+          <div className="mt-2 flex items-end justify-between gap-3 lg:hidden">
+            <p className="text-5xl font-semibold leading-none tracking-[-0.08em] text-foreground">{active.year}</p>
+            <p className="pb-1 text-right text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">{active.period}</p>
+          </div>
+
+          <div role="img" aria-label={`Timeline clock: ${active.period}`} className="relative mx-auto mt-8 hidden aspect-square w-full max-w-[25rem] overflow-hidden rounded-full lg:block">
             <div aria-hidden="true" className="absolute inset-0 rounded-full border border-border/60" />
             <div aria-hidden="true" className="absolute inset-[8%] rounded-full border border-border/60" />
             <div aria-hidden="true" className="absolute inset-[18%] rounded-full border border-border/60" />
@@ -110,7 +115,7 @@ export default function Experience() {
           </div>
 
           <div className="mx-auto mt-2 flex max-w-[25rem] items-center justify-between gap-4 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
-            <span>{active.period}</span>
+            <span className="hidden lg:inline">{active.period}</span>
             <span className="shrink-0 font-mono text-foreground">{active.number} / {String(chapters.length).padStart(2, "0")}</span>
           </div>
           <div aria-hidden="true" className="mx-auto mt-3 h-px max-w-[25rem] bg-border">
