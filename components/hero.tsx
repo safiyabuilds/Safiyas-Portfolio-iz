@@ -13,7 +13,7 @@ export default function Hero() {
   useEffect(() => {
     const intervalId = window.setInterval(() => {
       setRoleIndex((currentIndex) => (currentIndex + 1) % roles.length)
-    }, 5000)
+    }, 300)
 
     return () => window.clearInterval(intervalId)
   }, [])
@@ -37,7 +37,7 @@ export default function Hero() {
               </div>
               <div className="whitespace-nowrap text-[clamp(1.65rem,5vw,3.8rem)] font-semibold leading-none tracking-[-0.065em] text-foreground" aria-live="polite" aria-atomic="true">
                 <AnimatePresence mode="wait" initial={false}>
-                  <motion.span key={roles[roleIndex]} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="block">{roles[roleIndex]}</motion.span>
+                  <motion.span key={roles[roleIndex]} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.12 }} className="block">{roles[roleIndex]}</motion.span>
                 </AnimatePresence>
               </div>
             </div>
