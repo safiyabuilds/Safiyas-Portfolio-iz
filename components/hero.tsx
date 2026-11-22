@@ -13,7 +13,7 @@ export default function Hero() {
   useEffect(() => {
     const intervalId = window.setInterval(() => {
       setRoleIndex((currentIndex) => (currentIndex + 1) % roles.length)
-    }, 300)
+    }, 500)
 
     return () => window.clearInterval(intervalId)
   }, [])
