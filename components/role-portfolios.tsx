@@ -42,7 +42,7 @@ const roles: {
     eyebrow: "Clear direction, thoughtful delivery",
     summary: "Bringing people, priorities and delivery together to turn complex product ideas into useful outcomes.",
     focus: ["Product goals & roadmaps", "Cross-functional team leadership", "Sprint planning & delivery tracking", "Stakeholder coordination", "Launch, adoption & impact"],
-    projectNumbers: ["07"],
+    projectNumbers: ["06", "07"],
   },
 ]
 
@@ -96,6 +96,14 @@ const projects: Project[] = [
     video: "/videos/birth-flower-demo.mp4",
     live: "https://morhsophie.github.io/Birth-flower/",
     code: "https://github.com/safiyabuilds/Birth-flower",
+  },
+  {
+    number: "06",
+    title: "MediKey",
+    category: "Health tech · Project management",
+    description: "Led a four-person team from problem definition to a working MVP for patient-owned health records, using cryptographic identity and encrypted Nostr events.",
+    tags: ["Project management", "Patient-owned health records", "Bitcoin", "Nostr"],
+    video: "/videos/medikey-demo.mp4",
   },
   {
     number: "07",
