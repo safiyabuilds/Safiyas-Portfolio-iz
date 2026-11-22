@@ -184,6 +184,25 @@ export default function RolePortfolios() {
   const visibleRole = previewRole ?? enteredRole
 
   useEffect(() => {
+    const handleHomeNavigation = (event: MouseEvent) => {
+      const target = event.target
+      if (!(target instanceof Element) || !target.closest('a[href="#top"]')) return
+      if (!enteredRole && !enteringRole) return
+
+      event.preventDefault()
+      returnToDoors.current = false
+      setEnteringRole(null)
+      setEnteredRole(null)
+      setPreviewRole(null)
+      window.history.replaceState(null, "", "#top")
+      window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" })
+    }
+
+    document.addEventListener("click", handleHomeNavigation)
+    return () => document.removeEventListener("click", handleHomeNavigation)
+  }, [enteredRole, enteringRole])
+
+  useEffect(() => {
     if (!enteringRole) return
     const timeout = window.setTimeout(() => {
       setEnteredRole(enteringRole)

@@ -202,6 +202,15 @@ html.role-view-open #projects {
   --primary: #e1bf94;
 }
 
+.dark-portfolio #cv [class~="bg-card"] {
+  background-color: #000;
+  color: #f4f0ea;
+  --foreground: #f4f0ea;
+  --muted-foreground: #c7beb5;
+  --card-foreground: #f4f0ea;
+  --border: #4b4540;
+}
+
 .dark-portfolio .bg-card,
 .dark-portfolio [class~="bg-card/80"] {
   color: #211d19;
