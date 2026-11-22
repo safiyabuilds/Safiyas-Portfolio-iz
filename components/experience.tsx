@@ -87,9 +87,9 @@ export default function Experience() {
   }, [])
 
   return (
-    <section id="experience" className="border-t border-border px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+    <section id="experience" className="border-t border-border px-5 py-20 sm:px-8 lg:px-12 lg:py-28" style={{ backgroundImage: "radial-gradient(ellipse at 22% 26%, rgba(105, 58, 35, 0.26), transparent 42%), radial-gradient(ellipse at 80% 74%, rgba(100, 89, 82, 0.18), transparent 46%)" }}>
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-        <div className="sticky top-[4.75rem] z-30 -mx-5 border-b border-border bg-background/95 px-5 py-4 backdrop-blur-xl lg:static lg:mx-0 lg:border-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
+        <div className="sticky top-[4.75rem] z-30 -mx-5 border-b border-border bg-background/95 px-5 py-4 backdrop-blur-xl lg:top-24 lg:z-auto lg:mx-0 lg:h-fit lg:border-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-primary lg:mb-4">My story</p>
           <h2 className="text-3xl font-semibold tracking-[-0.06em] sm:text-4xl lg:text-5xl">Let&apos;s go back in time.</h2>
 
@@ -98,7 +98,7 @@ export default function Experience() {
             <p className="pb-1 text-right text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">{active.period}</p>
           </div>
 
-          <div role="img" aria-label={`Timeline clock: ${active.period}`} className="relative mx-auto mt-8 hidden aspect-square w-full max-w-[25rem] overflow-hidden rounded-full lg:block">
+          <div role="img" aria-label={`Timeline clock: ${active.period}`} className="relative mx-auto mt-8 hidden aspect-square w-full max-w-[32rem] overflow-hidden rounded-full lg:block">
             <div aria-hidden="true" className="absolute inset-0 rounded-full border border-border/60" />
             <div aria-hidden="true" className="absolute inset-[8%] rounded-full border border-border/60" />
             <div aria-hidden="true" className="absolute inset-[18%] rounded-full border border-border/60" />
@@ -108,7 +108,7 @@ export default function Experience() {
             <div aria-hidden="true" className="absolute inset-0 motion-safe:animate-[spin_60s_linear_infinite] motion-reduce:animate-none">
               <span className="absolute left-1/2 top-[7%] h-[43%] w-px -translate-x-1/2 bg-primary/60" />
             </div>
-            <motion.div key={`${active.year}-${active.number}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }} className="absolute inset-0 flex items-center justify-center font-semibold leading-none tracking-[-0.09em] text-foreground [font-size:clamp(4.5rem,11vw,8rem)]" aria-hidden="true">
+            <motion.div key={`${active.year}-${active.number}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }} className="absolute inset-0 flex items-center justify-center font-semibold leading-none tracking-[-0.09em] text-foreground [font-size:clamp(8rem,12vw,10rem)]" aria-hidden="true">
               {active.year}
             </motion.div>
             <div aria-hidden="true" className="absolute left-1/2 top-1/2 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-background bg-primary shadow-[0_0_0_6px_rgba(116,146,103,0.18)]" />
