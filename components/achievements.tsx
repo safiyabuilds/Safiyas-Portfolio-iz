@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { GraduationCap, Award, Trophy } from "lucide-react"
 
 const credentials = [
-  { title: "B.Sc. (Hons) Botany", organization: "Ahmadu Bello University, Zaria", description: "2019 – 2024", icon: GraduationCap },
+  { title: "B.Sc. (Hons) Botany", organization: "Ahmadu Bello University", description: "2019 – 2024", icon: GraduationCap },
   { title: "Google Project Management Professional Certificate", organization: "Coursera", description: "2022", icon: Award },
   { title: "Satoshi Sisters · Cohort 2", organization: "Capstone presentation · First place", description: "Bitcoin-backed microfinance · 2026", icon: Trophy },
   { title: "SheCluded · Cohort 7", organization: "Tech leadership & entrepreneurship", description: "Programme graduate", icon: Award },

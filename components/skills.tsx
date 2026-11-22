@@ -22,10 +22,10 @@ export default function Skills() {
         </motion.div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {skillCategories.map(({ title, skills, icon: Icon }, index) => (
-            <motion.article key={title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: index * 0.08 }} viewport={{ once: true }} className="rounded-xl border border-border bg-card p-6 transition hover:border-primary/50">
+            <motion.article key={title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: index * 0.08 }} viewport={{ once: true }} className="skills-card rounded-xl border border-[#a8a29e] bg-[#d6d3d1] p-6 text-[#292524] transition hover:border-primary/70">
               <div className="mb-4 flex size-12 items-center justify-center rounded-lg bg-primary/15 text-primary"><Icon size={23} /></div>
               <h3 className="mb-4 text-xl font-semibold">{title}</h3>
-              <ul className="flex flex-wrap gap-2">{skills.map((skill) => <li key={skill} className="rounded-full border border-border bg-background px-3 py-1 text-sm text-muted-foreground">{skill}</li>)}</ul>
+              <ul className="flex flex-wrap gap-2">{skills.map((skill) => <li key={skill} className="skills-tag rounded-full border border-[#a8a29e] bg-[#e7e5e4] px-3 py-1 text-sm text-[#292524]">{skill}</li>)}</ul>
             </motion.article>
           ))}
         </div>

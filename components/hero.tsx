@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react"
 import { ArrowDown, ArrowUpRight } from "lucide-react"
+import Image from "next/image"
 import { AnimatePresence, motion } from "framer-motion"
 const roles = ["Web Developer", "Project Manager"]
-const portraitUrl = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-11-20%20at%2011.07.26%20PM-PT0pFHJUHfTXzifzynW7kmBCCQvR5x.jpeg"
+const portraitUrl = "/safiya-muhammad-portrait.png"
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0)
@@ -18,14 +19,14 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative overflow-hidden px-5 pb-16 pt-32 sm:px-8 sm:pb-24 sm:pt-36 lg:min-h-[calc(100svh-76px)] lg:px-12 lg:pb-8 lg:pt-10">
+    <section className="hero-section relative overflow-hidden px-5 pb-16 pt-32 sm:px-8 sm:pb-24 sm:pt-36 lg:min-h-[calc(100svh-76px)] lg:px-12 lg:pb-8 lg:pt-10">
       <div className="mx-auto flex min-h-[inherit] max-w-6xl flex-col justify-center">
         <div className="mb-10 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground sm:mb-12 lg:mb-6">
           <span className="size-2 rounded-full bg-[#78916c]" aria-hidden="true" />
-          Open to web development and project management roles · Nigeria
+          Open to web development and project management roles
         </div>
         <div className="grid items-center gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:gap-0">
-          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="relative z-10 order-1 pb-5 lg:order-1 lg:pb-0">
+          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="hero-copy relative z-10 order-1 pb-5 lg:order-1 lg:pb-0">
             <h1 className="text-[clamp(3rem,5.8vw,5rem)] font-semibold leading-[0.88] tracking-[-0.075em]">
               Hi, I&apos;m<br />Safiya<span className="text-primary">.</span>
             </h1>
@@ -47,11 +48,12 @@ export default function Hero() {
             </div>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.15 }} className="relative order-2 mx-auto flex w-full max-w-[450px] items-end justify-center lg:order-2 lg:mx-0 lg:max-w-none lg:justify-end">
-            <div aria-hidden="true" className="absolute right-[9%] top-[6%] aspect-square w-[76%] rounded-full bg-[#e9dfd0]" />
-            <img src={portraitUrl} alt="Safiya Muhammad, software engineer and product manager" fetchPriority="high" className="relative z-10 aspect-[4/4.7] w-[83%] object-cover object-top lg:w-[70%]" />
+            <div className="hero-portrait-frame w-[83%] lg:w-[70%]">
+              <Image src={portraitUrl} alt="Safiya Muhammad, software engineer and product manager" fetchPriority="high" width={809} height={1080} className="hero-portrait relative z-10 block h-auto w-full" />
+            </div>
           </motion.div>
         </div>
-        <div className="mt-8 hidden items-center justify-between border-t border-border pt-4 text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground lg:flex"><span>Available for meaningful work</span><span>Remote-first · Worldwide</span></div>
+        <div className="mt-8 hidden items-center justify-between border-t border-border pt-4 text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground lg:flex"><span>Available for meaningful work</span></div>
       </div>
     </section>
   )

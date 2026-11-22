@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { motion, useInView, useReducedMotion } from "framer-motion"
-import { ArrowDown, ArrowUpRight, Check, Github } from "lucide-react"
+import { ArrowDown, ArrowLeft, ArrowUpRight, Check, Github } from "lucide-react"
 
 type RoleId = "web" | "management"
 
@@ -33,7 +33,7 @@ const roles: {
     eyebrow: "End to end, from sketch to live site",
     summary: "Thoughtful, responsive digital experiences—from the first interface sketch through implementation and launch.",
     focus: ["Discovery & planning", "UX and visual design", "Front-end and back-end development", "Technical SEO and performance", "Testing, launch and support"],
-    projectNumbers: ["01", "02", "03", "04", "05", "06"],
+    projectNumbers: ["01", "02", "03", "04", "05"],
   },
   {
     id: "management",
@@ -42,7 +42,7 @@ const roles: {
     eyebrow: "Clear direction, thoughtful delivery",
     summary: "Bringing people, priorities and delivery together to turn complex product ideas into useful outcomes.",
     focus: ["Product goals & roadmaps", "Cross-functional team leadership", "Sprint planning & delivery tracking", "Stakeholder coordination", "Launch, adoption & impact"],
-    projectNumbers: ["07", "08"],
+    projectNumbers: ["07"],
   },
 ]
 
@@ -55,7 +55,7 @@ const projects: Project[] = [
     tags: ["Node.js", "TypeScript", "MongoDB", "Postman"],
     video: "/videos/tech4youth-demo.mp4",
     live: "https://safiyas-tech4youth-capstone-project.onrender.com",
-    code: "https://github.com/Morhsophie/Safiyas-Tech4Youth-Capstone-Project",
+    code: "https://github.com/safiyabuilds/Safiyas-Tech4Youth-Capstone-Project",
   },
   {
     number: "02",
@@ -65,7 +65,7 @@ const projects: Project[] = [
     tags: ["React", "Web design", "Responsive UI"],
     video: "/videos/sophias-nexa-demo.mp4",
     live: "https://my-react-app-6bwf.onrender.com",
-    code: "https://github.com/Morhsophie/My-react-app",
+    code: "https://github.com/safiyabuilds/My-react-app",
   },
   {
     number: "03",
@@ -75,7 +75,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "JavaScript"],
     video: "/videos/nova-studio-demo.mp4",
     live: "https://sophia-s-nova-1.onrender.com",
-    code: "https://github.com/Morhsophie/Sophia-s-Nova",
+    code: "https://github.com/safiyabuilds/Sophia-s-Nova",
   },
   {
     number: "04",
@@ -85,7 +85,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "JavaScript"],
     video: "/videos/student-card-demo.mp4",
     live: "https://safiyas-student-card-id-generator.onrender.com",
-    code: "https://github.com/Morhsophie/Safiyas-Student-Card-ID-Generator-",
+    code: "https://github.com/safiyabuilds/Safiyas-Student-Card-ID-Generator-",
   },
   {
     number: "05",
@@ -95,17 +95,7 @@ const projects: Project[] = [
     tags: ["Python", "Pillow", "ImageIO", "FFmpeg"],
     video: "/videos/birth-flower-demo.mp4",
     live: "https://morhsophie.github.io/Birth-flower/",
-    code: "https://github.com/Morhsophie/Birth-flower",
-  },
-  {
-    number: "06",
-    title: "MediKey",
-    category: "Health tech · Product build",
-    description: "A patient-owned health record MVP using cryptographic identities and signed, encrypted Nostr events distributed across relays.",
-    tags: ["Product delivery", "Health tech", "Nostr"],
-    video: "/videos/medikey-demo.mp4",
-    live: "https://medikey-azure.vercel.app/",
-    code: "https://github.com/medikey/medikey",
+    code: "https://github.com/safiyabuilds/Birth-flower",
   },
   {
     number: "07",
@@ -115,16 +105,6 @@ const projects: Project[] = [
     tags: ["Project management", "Agritech", "25-person team", "1,800+ farmers"],
     video: "/videos/graintox-demo.mp4",
     live: "https://graintox.com",
-  },
-  {
-    number: "08",
-    title: "MediKey",
-    category: "Health tech · Cross-functional delivery",
-    description: "Coordinated the team building a patient-owned health-record MVP, aligning product direction with a working technical prototype.",
-    tags: ["Team leadership", "Product direction", "Health tech"],
-    video: "/videos/medikey-demo.mp4",
-    live: "https://medikey-azure.vercel.app/",
-    code: "https://github.com/medikey/medikey",
   },
 ]
 
@@ -151,7 +131,7 @@ function ProjectShowcase({ project, index }: { project: Project; index: number }
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`project-showcase grid grid-cols-1 overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-[0_24px_70px_rgba(30,24,20,0.08)] md:grid-cols-[1.15fr_0.85fr] ${index % 2 === 1 ? "md:[&>div:first-child]:order-2" : ""}`}
+      className={`project-showcase sticky grid grid-cols-1 overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-[0_24px_70px_rgba(30,24,20,0.08)] md:grid-cols-[1.15fr_0.85fr] ${index % 2 === 1 ? "md:[&>div:first-child]:order-2" : ""}`} style={{ top: `calc(5.5rem + ${index * 0.75}rem)` }}
     >
       <div className="project-showcase__media relative min-h-64 overflow-hidden bg-[#171918]">
         <video
@@ -191,10 +171,34 @@ function ProjectShowcase({ project, index }: { project: Project; index: number }
 export default function RolePortfolios() {
   const [previewRole, setPreviewRole] = useState<RoleId | null>(null)
   const [enteredRole, setEnteredRole] = useState<RoleId | null>(null)
+  const [enteringRole, setEnteringRole] = useState<RoleId | null>(null)
+  const returnToDoors = useRef(false)
   const visibleRole = previewRole ?? enteredRole
 
   useEffect(() => {
-    if (!enteredRole) return
+    if (!enteringRole) return
+    const timeout = window.setTimeout(() => {
+      setEnteredRole(enteringRole)
+      setEnteringRole(null)
+    }, window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 700)
+    return () => window.clearTimeout(timeout)
+  }, [enteringRole])
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("role-view-open", enteredRole !== null)
+    return () => document.documentElement.classList.remove("role-view-open")
+  }, [enteredRole])
+
+  useEffect(() => {
+    if (!enteredRole) {
+      if (!returnToDoors.current) return
+      returnToDoors.current = false
+      const frame = window.requestAnimationFrame(() => {
+        document.getElementById("projects")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" })
+      })
+      return () => window.cancelAnimationFrame(frame)
+    }
+
     const frame = window.requestAnimationFrame(() => {
       document.getElementById("role-projects")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" })
     })
@@ -202,16 +206,18 @@ export default function RolePortfolios() {
   }, [enteredRole])
 
   const enterRole = (role: RoleId) => {
+    if (enteringRole || enteredRole) return
     setPreviewRole(role)
-    setEnteredRole(role)
+    setEnteringRole(role)
   }
 
   return (
-    <section id="projects" aria-labelledby="doors-heading" className="role-portfolios scroll-mt-20 px-4 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-28">
+    <section id="projects" aria-labelledby="doors-heading" className="role-portfolios scroll-mt-20 px-4 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12">
       <div className="mx-auto max-w-7xl">
-        <div className="mx-auto mb-12 max-w-4xl text-center sm:mb-16">
+        {!enteredRole && <>
+        <div className="mx-auto mb-6 max-w-4xl text-center sm:mb-8">
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">Web · Product · Impact</p>
-          <h2 id="doors-heading" className="text-4xl font-semibold tracking-[-0.065em] sm:text-6xl lg:text-7xl">Magic happens behind the doors</h2>
+          <h2 id="doors-heading" className="text-3xl font-semibold tracking-[-0.065em] sm:text-5xl lg:text-6xl">Magic happens behind the doors</h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">Choose a role to explore the work, craft and decisions behind it.</p>
         </div>
 
@@ -220,7 +226,7 @@ export default function RolePortfolios() {
             const isActive = visibleRole === role.id
             const detailsId = `role-details-${role.id}`
             return (
-              <article key={role.id} className={`role-door-card role-door-card--${role.id} ${isActive ? "is-active" : ""}`}>
+              <article key={role.id} className={`role-door-card role-door-card--${role.id} ${isActive ? "is-active" : ""} ${enteringRole === role.id ? "is-entering" : ""}`}>
                 <button
                   id={`role-${role.id}`}
                   type="button"
@@ -256,26 +262,35 @@ export default function RolePortfolios() {
           })}
         </div>
 
-        {!enteredRole && <p className="mt-8 text-center text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">Hover to preview · Select a door to enter</p>}
+        <p className="mt-8 text-center text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">Hover to preview · Select a door to enter</p>
+        </>}
 
         {enteredRole && (() => {
           const role = roles.find((item) => item.id === enteredRole)!
           const roleProjects = projects.filter((project) => role.projectNumbers.includes(project.number))
           return (
-            <section id="role-projects" aria-labelledby="role-projects-heading" className="scroll-mt-24 pt-20 sm:pt-28">
-              <div className="mb-10 flex flex-col gap-5 border-b border-border pb-7 sm:flex-row sm:items-end sm:justify-between">
-                <div>
-                  <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary">Inside the {role.label} door</p>
-                  <h3 id="role-projects-heading" className="text-3xl font-semibold tracking-[-0.06em] sm:text-5xl">Selected projects</h3>
+            <motion.section
+              id="role-projects"
+              aria-labelledby="role-projects-heading"
+              initial={{ opacity: 0, scale: 0.97, y: 28 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+              className="role-interior scroll-mt-20"
+            >
+              <div className="role-interior__wall">
+                <div className="mb-12 max-w-5xl border-b border-border/70 pb-8 sm:mb-16 sm:pb-10">
+                  <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">Selected work · {role.plate}</p>
+                  <h3 id="role-projects-heading" className="text-5xl font-semibold tracking-[-0.065em] sm:text-7xl lg:text-[7rem] lg:leading-[0.95]">{role.label}</h3>
+                  <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">{role.summary}</p>
                 </div>
-                <button type="button" onClick={() => { setEnteredRole(null); setPreviewRole(null); document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }) }} className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-sm font-medium transition hover:border-primary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-                  Back to the doors<ArrowUpRight size={15} aria-hidden="true" />
+                <div className="flex flex-col gap-8 sm:gap-12">
+                  {roleProjects.map((project, index) => <ProjectShowcase key={`${enteredRole}-${project.number}`} project={project} index={index} />)}
+                </div>
+                <button type="button" onClick={() => { returnToDoors.current = true; setEnteredRole(null); setPreviewRole(null) }} className="role-interior__back fixed bottom-5 left-5 z-40 inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-card-foreground shadow-lg transition hover:border-primary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:bottom-7 sm:left-7">
+                  <ArrowLeft size={16} aria-hidden="true" /> Back to the doors
                 </button>
               </div>
-              <div className="flex flex-col gap-8 sm:gap-12">
-                {roleProjects.map((project, index) => <ProjectShowcase key={`${enteredRole}-${project.number}`} project={project} index={index} />)}
-              </div>
-            </section>
+            </motion.section>
           )
         })()}
       </div>

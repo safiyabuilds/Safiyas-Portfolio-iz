@@ -159,7 +159,180 @@ html {
 }
 
 body {
+  min-height: 100vh;
   overflow-x: clip;
+  transition: background-color 400ms ease;
+}
+
+html.role-view-open main > :not(header):not(#projects) {
+  display: none;
+}
+
+html.role-view-open #projects {
+  min-height: 100vh;
+}
+
+.dark-portfolio #experience .experience-discipline-tag {
+  background-color: #f4eadb;
+  color: #43392f;
+}
+
+.dark-portfolio {
+  --background: #000;
+  --foreground: #f4f0ea;
+  --card: #fbf7ef;
+  --card-foreground: #211d19;
+  --primary: #e1bf94;
+  --primary-foreground: #211d19;
+  --muted-foreground: #c7beb5;
+  --border: #4b4540;
+  color-scheme: dark;
+}
+
+.dark-portfolio body,
+.dark-portfolio main {
+  background-color: #000;
+}
+
+.dark-portfolio main > section {
+  background-color: #000;
+  color: #f4f0ea;
+  --foreground: #f4f0ea;
+  --muted-foreground: #c7beb5;
+  --primary: #e1bf94;
+}
+
+.dark-portfolio .bg-card,
+.dark-portfolio [class~="bg-card/80"] {
+  color: #211d19;
+  --foreground: #211d19;
+  --muted-foreground: #5e5852;
+  --card-foreground: #211d19;
+  --primary: #8f4c32;
+  --border: #d7cfc4;
+}
+
+.dark-portfolio .hero-copy [class~="bg-[#f7f2e9]"] {
+  color: #211d19;
+  --foreground: #211d19;
+  --muted-foreground: #5e5852;
+  --primary: #8f4c32;
+  --border: #d7cfc4;
+}
+
+.hero-portrait-frame {
+  background: transparent;
+}
+
+.dark-portfolio .hero-portrait-frame {
+  background: #000;
+  padding: 0.5rem 0.5rem 0;
+}
+
+.dark-portfolio .hero-portrait {
+  filter: grayscale(1) contrast(1.08);
+}
+
+.dark-portfolio .skills-card {
+  border-color: #78716c;
+  background: #a8a29e;
+  color: #1c1917;
+}
+
+.dark-portfolio .skills-tag {
+  border-color: #78716c;
+  background: #d6d3d1;
+  color: #1c1917;
+}
+
+.dark-portfolio .hero-copy h1 {
+  color: #f6f0e9;
+}
+
+.dark-portfolio .hero-copy > p {
+  color: #c9c1b8;
+}
+
+.dark-portfolio header {
+  border-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(27, 25, 24, 0.96);
+  color: #f6f0e9;
+}
+
+.dark-portfolio header a {
+  color: #e5ded7;
+}
+
+.dark-portfolio header a:hover {
+  color: #fff;
+}
+
+.dark-portfolio .role-portfolios {
+  background: #000;
+  color: #f4f0ea;
+}
+
+.dark-portfolio .role-portfolios .text-muted-foreground {
+  color: #c7beb5;
+}
+
+.dark-portfolio .role-portfolios .text-primary {
+  color: #e1bf94;
+}
+
+.dark-portfolio .role-interior {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: #000;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.dark-portfolio .project-showcase {
+  color: #211d19;
+}
+
+.dark-portfolio .project-showcase .text-muted-foreground {
+  color: #5e5852;
+}
+
+.dark-portfolio .project-showcase .text-primary {
+  color: #8f4c32;
+}
+
+.dark-portfolio .project-showcase [class~="bg-background"] {
+  --background: #fbf7ef;
+  --foreground: #211d19;
+  --muted-foreground: #5e5852;
+  --border: #d7cfc4;
+}
+
+.project-showcase {
+  scroll-margin-top: 6rem;
+}
+
+.role-interior {
+  min-height: 85vh;
+  border: 1px solid rgba(88, 78, 69, 0.2);
+  border-radius: 3rem;
+  background: linear-gradient(180deg, rgba(249, 246, 241, 0.78), rgba(221, 214, 205, 0.94));
+  padding: clamp(1rem, 4vw, 3rem);
+  box-shadow: 0 28px 80px rgba(34, 28, 24, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.82);
+}
+
+.role-interior__wall {
+  position: relative;
+  min-height: 70vh;
+}
+
+@media (max-width: 767px) {
+  .role-interior {
+    min-height: 100vh;
+    border-radius: 1.25rem;
+    padding: 1rem;
+  }
+
+  .project-showcase {
+    top: 5.5rem;
+  }
 }
 
 img,
@@ -168,7 +341,14 @@ video {
 }
 
 .role-portfolios {
+  display: flex;
+  min-height: calc(100svh - 4.75rem);
+  align-items: center;
   background: linear-gradient(180deg, #e7e2dc 0%, #d9d3cc 76%, #d1c9c1 100%);
+}
+
+.role-portfolios > div {
+  width: 100%;
 }
 
 .role-doorway {
@@ -177,7 +357,7 @@ video {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: end;
   gap: clamp(1rem, 3vw, 2.5rem);
-  padding: 1.5rem 0 0;
+  padding: 0.5rem 0 0;
 }
 
 .role-doorway::after {
@@ -197,7 +377,7 @@ video {
   z-index: 1;
   display: grid;
   min-width: 0;
-  min-height: 25rem;
+  min-height: 18rem;
   grid-template-columns: minmax(135px, 0.62fr) minmax(0, 1fr);
   align-items: end;
   gap: clamp(0.85rem, 2vw, 1.75rem);
@@ -209,7 +389,7 @@ video {
   position: relative;
   display: flex;
   width: min(100%, 13rem);
-  height: 23rem;
+  height: 16rem;
   align-self: end;
   flex-direction: column;
   justify-content: flex-end;
@@ -222,8 +402,17 @@ video {
   transition: transform 350ms ease;
 }
 
+.role-door-button {
+  transform-origin: left center;
+  transform-style: preserve-3d;
+}
+
 .role-door-card.is-active .role-door-button {
   transform: perspective(900px) rotateY(-5deg) translateY(-0.35rem);
+}
+
+.role-door-card.is-entering .role-door-button {
+  transform: perspective(900px) rotateY(-72deg) translateY(-0.35rem);
 }
 
 .role-door-frame {

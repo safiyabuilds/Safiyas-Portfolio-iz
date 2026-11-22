@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Safiya Muhammad | Web Developer & Project Manager",
   description:
     "Portfolio of Safiya Muhammad, a web developer and project manager building responsive digital products and leading teams across agritech and health tech.",
-  keywords: "Safiya Muhammad, web developer, project manager, React, Next.js, Node.js, Nigeria",
+  keywords: "Safiya Muhammad, web developer, project manager, React, Next.js, Node.js",
   authors: [{ name: "Safiya Muhammad" }],
   openGraph: {
     title: "Safiya Muhammad | Web Developer & Project Manager",

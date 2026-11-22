@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Send } from "lucide-react"
+import { Mail, Phone, Send } from "lucide-react"
 import { useState } from "react"
 
 export default function Contact() {
@@ -44,28 +44,28 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 border-t border-border">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="border-t border-border py-8 sm:py-10">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-8 text-center"
         >
-          <h2 className="text-4xl font-bold mb-4">Let's Connect</h2>
+          <h2 className="text-4xl font-bold mb-4">Let&apos;s Connect</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Have a project in mind or just want to chat? I'd love to hear from you!
+            Have a project in mind or just want to chat? I&apos;d love to hear from you!
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start overflow-x-clip">
+        <div className="grid items-start gap-8 overflow-x-clip md:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="space-y-6"
           >
             <div className="flex gap-4">
               <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
@@ -94,15 +94,6 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="flex gap-4">
-              <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
-                <MapPin size={24} className="text-primary" />
-              </div>
-              <div>
-                <h3 className="font-semibold mb-1">Location</h3>
-                <p className="text-muted-foreground">Nigeria</p>
-              </div>
-            </div>
           </motion.div>
 
           <motion.form
@@ -157,7 +148,7 @@ export default function Contact() {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                rows={5}
+                rows={3}
                 className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:border-primary focus:outline-none transition-colors text-foreground placeholder-muted-foreground resize-none"
                 placeholder="Your message..."
               ></textarea>
