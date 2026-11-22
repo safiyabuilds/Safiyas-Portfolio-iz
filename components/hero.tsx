@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { ArrowDown, ArrowUpRight } from "lucide-react"
 import Image from "next/image"
 import { AnimatePresence, motion } from "framer-motion"
-const roles = ["Web Developer", "Project Manager"]
+const roles = ["Software Developer", "Project Manager", "Botanist"]
 const portraitUrl = "/safiya-muhammad-portrait.png"
 
 export default function Hero() {
