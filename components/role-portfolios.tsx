@@ -31,7 +31,7 @@ const roles: {
     label: "Web Development",
     plate: "WEB DEVELOPER",
     eyebrow: "End to end, from sketch to live site",
-    summary: "Thoughtful, responsive digital experiences—from the first interface sketch through implementation and launch.",
+    summary: "Thoughtful, responsive digital experiences, from the first interface sketch through implementation and launch.",
     focus: ["Discovery & planning", "UX and visual design", "Front-end and back-end development", "Technical SEO and performance", "Testing, launch and support"],
     projectNumbers: ["01", "02", "03", "04", "05"],
   },
@@ -182,6 +182,25 @@ export default function RolePortfolios() {
   const [enteringRole, setEnteringRole] = useState<RoleId | null>(null)
   const returnToDoors = useRef(false)
   const visibleRole = previewRole ?? enteredRole
+
+  useEffect(() => {
+    const handleHomeNavigation = (event: MouseEvent) => {
+      const target = event.target
+      if (!(target instanceof Element) || !target.closest('a[href="#top"]')) return
+      if (!enteredRole && !enteringRole) return
+
+      event.preventDefault()
+      returnToDoors.current = false
+      setEnteringRole(null)
+      setEnteredRole(null)
+      setPreviewRole(null)
+      window.history.replaceState(null, "", "#top")
+      window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" })
+    }
+
+    document.addEventListener("click", handleHomeNavigation)
+    return () => document.removeEventListener("click", handleHomeNavigation)
+  }, [enteredRole, enteringRole])
 
   useEffect(() => {
     if (!enteringRole) return

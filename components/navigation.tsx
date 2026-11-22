@@ -23,8 +23,8 @@ export default function Navigation() {
     return () => window.clearInterval(timer)
   }, [])
 
-  const timeLabel = time?.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }) ?? "—"
-  const dateLabel = time?.toLocaleDateString([], { day: "numeric", month: "long", year: "numeric" }) ?? "—"
+  const timeLabel = time?.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }) ?? "-"
+  const dateLabel = time?.toLocaleDateString([], { day: "numeric", month: "long", year: "numeric" }) ?? "-"
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark-portfolio", darkPortfolio)
