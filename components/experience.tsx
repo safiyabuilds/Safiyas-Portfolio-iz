@@ -87,11 +87,11 @@ export default function Experience() {
   }, [])
 
   return (
-    <section id="experience" className="border-t border-border px-5 py-20 sm:px-8 lg:px-12 lg:py-28" style={{ backgroundImage: "radial-gradient(ellipse at 22% 26%, rgba(105, 58, 35, 0.26), transparent 42%), radial-gradient(ellipse at 80% 74%, rgba(100, 89, 82, 0.18), transparent 46%)" }}>
+    <section id="experience" className="experience-section border-t border-border px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
         <div className="sticky top-[4.75rem] z-30 -mx-5 border-b border-border bg-background/95 px-5 py-4 backdrop-blur-xl lg:top-24 lg:z-auto lg:mx-0 lg:h-fit lg:border-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-primary lg:mb-4">My story</p>
-          <h2 className="text-3xl font-semibold tracking-[-0.06em] sm:text-4xl lg:text-5xl">Let&apos;s go back in time.</h2>
+          <h2 className="experience-title text-3xl font-semibold tracking-[-0.06em] sm:text-4xl lg:text-5xl">Let&apos;s go back in time.</h2>
 
           <div className="mt-2 flex items-end justify-between gap-3 lg:hidden">
             <p className="text-5xl font-semibold leading-none tracking-[-0.08em] text-foreground">{active.year}</p>

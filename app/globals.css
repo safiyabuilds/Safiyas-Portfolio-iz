@@ -234,15 +234,20 @@ html.role-view-open #projects {
 }
 
 .dark-portfolio .skills-card {
-  border-color: #78716c;
-  background: #a8a29e;
-  color: #1c1917;
+  border-color: #3c3936;
+  background: #050505;
+  color: #f4f0ea;
+}
+
+.dark-portfolio .skills-card > div {
+  background: #191612;
+  color: #f0c77e;
 }
 
 .dark-portfolio .skills-tag {
-  border-color: #78716c;
-  background: #d6d3d1;
-  color: #1c1917;
+  border-color: #44403c;
+  background: #141414;
+  color: #f4f0ea;
 }
 
 .dark-portfolio .hero-copy h1 {
@@ -287,22 +292,68 @@ html.role-view-open #projects {
 }
 
 .dark-portfolio .project-showcase {
-  color: #211d19;
+  --background: #000;
+  --foreground: #f4f0ea;
+  --card: #000;
+  --card-foreground: #f4f0ea;
+  --muted: #171717;
+  --muted-foreground: #c7beb5;
+  --border: rgba(255, 255, 255, 0.18);
+  --primary: #e1bf94;
+  color: var(--foreground);
+  border-color: var(--border);
+  background: #000;
 }
 
 .dark-portfolio .project-showcase .text-muted-foreground {
-  color: #5e5852;
+  color: #c7beb5;
 }
 
 .dark-portfolio .project-showcase .text-primary {
-  color: #8f4c32;
+  color: #e1bf94;
 }
 
-.dark-portfolio .project-showcase [class~="bg-background"] {
-  --background: #fbf7ef;
-  --foreground: #211d19;
-  --muted-foreground: #5e5852;
-  --border: #d7cfc4;
+.dark-portfolio .experience-section {
+  --background: #000;
+  --foreground: #f4f0ea;
+  --muted: #171717;
+  --muted-foreground: #c7beb5;
+  --border: rgba(255, 255, 255, 0.18);
+  --primary: #e1bf94;
+  color: var(--foreground);
+  background-color: #000;
+  background-image: radial-gradient(ellipse at 18% 28%, rgba(161, 91, 50, 0.2), transparent 44%), radial-gradient(ellipse at 82% 72%, rgba(46, 115, 108, 0.16), transparent 46%);
+}
+
+.dark-portfolio .experience-title {
+  color: transparent;
+  background-image: linear-gradient(100deg, #f2d39b 0%, #d89162 28%, #9fc7bb 57%, #b2a4db 78%, #f2d39b 100%);
+  background-size: 240% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: experience-title-color-shift 10s ease-in-out infinite;
+}
+
+@keyframes experience-title-color-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dark-portfolio .experience-title {
+    animation: none;
+    background-position: 50% 50%;
+  }
+}
+
+.experience-section {
+  background-image: radial-gradient(ellipse at 22% 26%, rgba(105, 58, 35, 0.26), transparent 42%), radial-gradient(ellipse at 80% 74%, rgba(100, 89, 82, 0.18), transparent 46%);
 }
 
 .project-showcase {
